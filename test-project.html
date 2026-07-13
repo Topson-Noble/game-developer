@@ -35,6 +35,7 @@
     /* ── Back button (top) ── */
     .back-btn-top {
       margin-bottom: 1.5rem;
+      text-align: left;
     }
 
     .back-btn {
@@ -156,37 +157,18 @@
       margin-bottom: 0.6rem;
     }
 
-    .feature-media {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
+    /* Sub-group label inside a feature card (GIFs / Screenshots) */
+    .feature-media-group {
+      margin-top: 1.5rem;
     }
 
-    @media (max-width: 575px) {
-      .feature-media {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .feature-media .media-item {
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 10px;
-      border: 1.5px solid #c8c8d0;
-      cursor: pointer;
-    }
-
-    .feature-media .media-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .feature-media .media-item:hover img {
-      transform: scale(1.06);
+    .feature-media-group h5 {
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
     }
 
     /* ── Gallery / Screenshot Grid ── */
@@ -311,8 +293,8 @@
       <div class="container" data-aos="fade-up">
 
         <!-- ══════ BACK BUTTON (TOP) ══════ -->
-        <div class="back-btn-top">
-          <a href="game-projects.html" class="btn btn-outline-light btn-sm">
+        <div class="back-btn-top" data-aos="fade-up">
+          <a href="game-projects.html" class="btn btn-primary">
             <i class="bi bi-arrow-left"></i> Back to Game Projects
           </a>
         </div>
@@ -347,15 +329,11 @@
           <a href="https://topzone.itch.io/the-songs-of-ayan" target="_blank" class="btn btn-primary">
             <i class="bi bi-download"></i> Download Game
           </a>
-          <!--
-            GitHub button — same style as Download.
-            Only include this on projects that actually have a public repo.
-            Replace the href below with the real repo link, then uncomment.
-
+          <!-- GitHub button — same style as Download. On by default; replace the href with
+               the project's real repo link, or delete this whole <a> if the project has no public repo. -->
           <a href="https://github.com/your-username/your-repo" target="_blank" class="btn btn-primary">
             <i class="bi bi-github"></i> View on GitHub
           </a>
-          -->
         </div>
 
         <!-- ══════ PROJECT OVERVIEW ══════ -->
@@ -387,29 +365,49 @@
         <div class="project-section-block" data-aos="fade-up">
           <h3>Game Features</h3>
 
-          <!-- Feature 1 -->
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 1
+               Structure: Title → Description → GIFs (optional) → Screenshots (optional)
+               Duplicate this entire .feature-block to add Feature 02, 03, etc.
+               ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
             <h4>Shrine-Based Rhythm Challenges</h4>
+
+            <!-- Description -->
             <p>Sayo undertakes shrine-based rhythm challenges and collects drum artifacts as part of his initiation into the Ayan drumming guild, translating real-life drumming practices into interactive mechanics.</p>
             <p>This embeds cultural meaning directly into gameplay while reinforcing the narrative progression of the story.</p>
-            <!-- Optional media for this feature — delete the .feature-media block entirely if not needed -->
+
+            <!-- GIFs (optional) — add <div class="screenshot-item"> entries below, or delete this whole block if none -->
             <!--
-            <div class="feature-media">
-              <div class="media-item" onclick="openLightbox(this)">
-                <img src="assets/img/the-songs-of-ayan/feature-1.png" alt="Shrine Rhythm Challenge">
+            <div class="feature-media-group">
+              <h5>GIFs</h5>
+              <div class="screenshot-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="assets/img/the-songs-of-ayan/feature-1.gif" alt="Shrine Rhythm Challenge Gif">
+                </div>
               </div>
-              <div class="media-item" onclick="openLightbox(this)">
-                <img src="assets/img/the-songs-of-ayan/feature-1-gif.gif" alt="Shrine Rhythm Challenge Gif">
+            </div>
+            -->
+
+            <!-- Screenshots (optional) — add <div class="screenshot-item"> entries below, or delete this whole block if none -->
+            <!--
+            <div class="feature-media-group">
+              <h5>Screenshots</h5>
+              <div class="screenshot-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="assets/img/the-songs-of-ayan/feature-1.png" alt="Shrine Rhythm Challenge Screenshot">
+                </div>
               </div>
             </div>
             -->
           </div>
 
-          <!-- Add more feature blocks below by duplicating the one above, e.g.:
+          <!-- Add more feature cards below by duplicating the block above, e.g.:
           <div class="feature-block">
-            <h4>Feature Name</h4>
+            <h4>Feature 02 Title</h4>
             <p>Description of the problem solved, systems built, and tech used.</p>
-            <div class="feature-media"> ... </div>
+            <div class="feature-media-group"> ... GIFs ... </div>
+            <div class="feature-media-group"> ... Screenshots ... </div>
           </div>
           -->
 
