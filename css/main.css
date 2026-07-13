@@ -205,7 +205,7 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: rgba(16, 26, 32, 0.9);
+  --background-color: rgba(3, 5, 6, 0.95);
 }
 
 /*--------------------------------------------------------------
