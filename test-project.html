@@ -113,6 +113,7 @@
       color: #ffffff;
       line-height: 1.7;
       margin-bottom: 0.6rem;
+      text-align: justify;
     }
 
     .info-card p:last-child {
@@ -155,6 +156,7 @@
       color: rgba(255, 255, 255, 0.9);
       line-height: 1.7;
       margin-bottom: 0.6rem;
+      text-align: justify;
     }
 
     /* Sub-group label inside a feature card (GIFs / Screenshots) */
@@ -162,12 +164,15 @@
       margin-top: 1.5rem;
     }
 
+    /* ── PICKY-TOUCH OVERRIDE ──
+       Makes the "GIFS" / "SCREENSHOTS" sub-labels match the feature
+       title (h4) font/style exactly. Delete this whole rule (and the
+       .feature-media-group h5 rule above it becomes unused) to revert
+       these labels back to a smaller, muted, uppercase look instead. */
     .feature-media-group h5 {
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.15rem;
       margin-bottom: 0.75rem;
     }
 
@@ -188,6 +193,36 @@
     @media (max-width: 480px) {
       .screenshot-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Game Features media grid — same sizing as the Gallery grid above,
+       but centers items instead of stretching them across 3 fixed columns.
+       1 item = centered single item. 2 items = centered pair. 3+ items =
+       wraps and fills rows just like the Gallery grid. ── */
+    .feature-media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .feature-media-grid .screenshot-item {
+      flex: 0 0 calc((100% - 2.5rem) / 3);
+      max-width: calc((100% - 2.5rem) / 3);
+    }
+
+    @media (max-width: 767px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: calc((100% - 1.25rem) / 2);
+        max-width: calc((100% - 1.25rem) / 2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: 100%;
+        max-width: 100%;
       }
     }
 
@@ -380,7 +415,7 @@
             <!-- GIFs (optional) — replace src with your real gif(s), add/remove .screenshot-item entries, or delete this whole block if none -->
             <div class="feature-media-group">
               <h5>GIFs</h5>
-              <div class="screenshot-grid">
+              <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder" alt="Shrine Rhythm Challenge Gif">
                 </div>
@@ -390,7 +425,7 @@
             <!-- Screenshots (optional) — replace src with your real screenshot(s), add/remove .screenshot-item entries, or delete this whole block if none -->
             <div class="feature-media-group">
               <h5>Screenshots</h5>
-              <div class="screenshot-grid">
+              <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Shrine Rhythm Challenge Screenshot 1">
                 </div>
@@ -405,13 +440,13 @@
                FEATURE CARD 2 — placeholder, replace title/description/media
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Feature 02 Title (Placeholder)</h4>
+            <h4>Feature 02 Title (Placeholder Block)</h4>
 
             <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
 
             <div class="feature-media-group">
               <h5>GIFs</h5>
-              <div class="screenshot-grid">
+              <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder" alt="Feature 02 Gif">
                 </div>
@@ -420,7 +455,7 @@
 
             <div class="feature-media-group">
               <h5>Screenshots</h5>
-              <div class="screenshot-grid">
+              <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Feature 02 Screenshot 1">
                 </div>
@@ -444,7 +479,7 @@
 
             <div class="feature-media-group">
               <h5>GIFs</h5>
-              <div class="screenshot-grid">
+              <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder+1" alt="Feature 03 Gif 1">
                 </div>
@@ -456,7 +491,7 @@
 
             <div class="feature-media-group">
               <h5>Screenshots</h5>
-              <div class="screenshot-grid">
+              <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Feature 03 Screenshot 1">
                 </div>
