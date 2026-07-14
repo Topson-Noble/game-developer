@@ -82,7 +82,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      justify-content: center;
+      justify-content: flex-start;
       margin-bottom: 3rem;
     }
 
@@ -99,14 +99,39 @@
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 1rem;
+      text-align: center;
     }
 
-    /* ── Overview / Tools text card ── */
+    /* ── Overview / Tools / Technical Details card ──
+       The section header now lives INSIDE the card as a title bar.
+       Only .info-card-body scrolls (not the whole card), so the
+       header stays visible the whole time, even while the text
+       below it is being scrolled. */
     .info-card {
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 10px;
-      padding: 1.25rem 1.5rem;
       background: rgba(255, 255, 255, 0.03);
+      overflow: hidden; /* clips the title bar's corners to match the card's rounded corners */
+
+      max-width: 1400px;      /* Control the card's width here*/
+      margin: 0 auto;
+    }
+
+    .info-card-title {
+      margin: 0;
+      padding: 1rem 1.5rem 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .info-card-body {
+      padding: 1.25rem 1.5rem;
+
+      max-height: 160px;       /* ← ADJUST THIS to control the scrollable body's height */
+      overflow-y: auto;        /* shows a scrollbar only when content overflows */
+      overflow-x: hidden;
     }
 
     .info-card p {
@@ -120,10 +145,14 @@
       margin-bottom: 0;
     }
 
-    /* ── Tools Used tags ── */
+    /* ── Tools Used tags ──
+       justify-content: center keeps tags centered as a group.
+       flex-wrap already sends overflow tags to a new line automatically
+       once the row runs out of horizontal space in .info-card. */
     .tools-list {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 0.6rem;
     }
 
@@ -148,15 +177,35 @@
     .feature-block h4 {
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 0.75rem;
       font-size: 1.15rem;
+      margin: 0 0 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* faded line below the title */
     }
 
-    .feature-block p {
+    /* ── Feature description — scrollable, justified, same behavior
+       as the Project Overview card. Only this block scrolls; the
+       title above and the media below it stay fully visible. ── */
+    .feature-description {
+      max-height: 160px;       /* ← ADJUST THIS to control the scrollable area's height */
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 0.75rem;  /* ← keeps text clear of the scrollbar */
+      padding-left: 0.1rem;    /* small matching space on the left for visual balance */
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* demarcation line before the media below */
+    }
+
+    .feature-description p {
       color: rgba(255, 255, 255, 0.9);
       line-height: 1.7;
-      margin-bottom: 0.6rem;
+      margin-bottom: 1rem;
       text-align: justify;
+    }
+
+    .feature-description p:last-child {
+      margin-bottom: 0;
     }
 
     /* Sub-group label inside a feature card (GIFs / Screenshots) */
@@ -208,7 +257,8 @@
     }
 
     .feature-media-grid .screenshot-item {
-      flex: 0 0 calc((100% - 2.5rem) / 3);
+      flex: 0 1 360px;
+      width: min(360px, 100%);
       max-width: calc((100% - 2.5rem) / 3);
     }
 
@@ -354,7 +404,7 @@
         <!-- ══════ GAMEPLAY VIDEO ══════ -->
         <div class="ratio ratio-16x9 mb-4" data-aos="fade-up" data-aos-delay="100">
           <iframe
-            src="https://www.youtube.com/embed/SDUEfqjvKUM"
+            src="https://www.youtube.com/embed/XHvgcWV7uKs"
             title="The Songs Of Ayan Gameplay Video"
             frameborder="0"
             allowfullscreen>
@@ -374,44 +424,75 @@
         </div>
 
         <!-- ══════ PROJECT OVERVIEW ══════
-             Each paragraph below is justified + clearly spaced
-             automatically (see .info-card p CSS rule above). -->
+             Header now lives inside the card and stays visible even
+             while the body below it scrolls. Paragraphs remain
+             justified + clearly spaced (see .info-card p CSS rule). -->
         <div class="project-section-block" data-aos="fade-up">
-          <h3>Project Overview</h3>
           <div class="info-card">
+            <h3 class="info-card-title">Project Overview</h3>
+            <div class="info-card-body">
 
-            <!-- Paragraph 1: Elevator pitch -->
-            <p>The Songs of Ayan is a short narrative rhythm game where every beat carries meaning and every rhythm challenge has a significance.</p>
+              <p>>>> The Songs of Ayan is a short narrative rhythm game where every beat carries meaning and every rhythm challenge has a significance.</p>
 
-            <!-- Paragraph 2: Story context -->
-            <p>The Songs of Ayan follows Sayo, a young man of the Ayan lineage, as he undertakes shrine-based rhythm challenges, collects drum artifacts, and seeks the blessings of Ayan Agalu, the Yoruba deity of drumming, in order to complete his initiation into the Ayan drumming guild.</p>
+              <p>>>> The story follows Sayo, a young man of the Ayan lineage, as he undertakes shrine-based rhythm challenges, collects drum artifacts, and seeks the blessings of Ayan Agalu, the Yoruba deity of drumming, in order to complete his initiation into the Ayan drumming guild.</p>
 
-            <!-- Paragraph 3: Cultural/gameplay translation -->
-            <p>The game translates real-life drumming practices into interactive mechanics, embedding cultural meaning directly into gameplay while reinforcing narrative progression.</p>
+              <p>>>> Step into an experience inspired by the Yoruba drumming tradition of southwestern Nigeria, where rhythm is more than sound. It is language, identity, and storytelling. Through a series of rhythm challenges, you will gradually uncover the significance behind each interaction and connect with the spirit of the drum.</p>
 
-            <!-- Paragraph 4: Solo developer credit -->
-            <p>- <strong>Solo Developer:</strong> I was solely responsible for every aspect of the game's development, from designing the game, to creating all the assets (characters, environments, props, animations, sounds and UI), to the Unreal Engine 5 implementation (game programming).</p>
+              <p>>>> The game translates real-life drumming practices into interactive mechanics, embedding cultural meaning directly into gameplay while reinforcing narrative progression.</p>
 
+              <p>>>> This project was developed solo and created as part of my master’s thesis in the REPLAY program, and this is the first playable version shared for public playtesting.</p>
+
+              <p>>>> The game takes about 10 to 15 minutes to complete, making it a quick but meaningful experience.</p>
+
+            </div>
           </div>
         </div>
 
         <!-- ══════ TOOLS USED ══════ -->
         <div class="project-section-block" data-aos="fade-up">
-          <h3>Tools Used</h3>
           <div class="info-card">
-            <div class="tools-list">
-              <span class="tool-tag">Unreal Engine 5.7.4</span>
-              <!-- Add more tags here as needed, e.g.: -->
-              <!-- <span class="tool-tag">Blueprints</span> -->
-              <!-- <span class="tool-tag">Maya</span> -->
-              <!-- <span class="tool-tag">Substance Painter</span> -->
+            <h3 class="info-card-title">Tools</h3>
+            <div class="info-card-body">
+              <div class="quick-facts">
+                <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.7.4 </span>
+                <span class="fact-pill"><strong>3D Assets Creation:</strong> Maya & Blender </span>
+                <span class="fact-pill"><strong>Sound Design:</strong> FL Studio </span>
+                <span class="fact-pill"><strong>Game Design:</strong> Miro, Canva, Draw IO, Google Docs </span>
+                <span class="fact-pill"><strong>Project Management:</strong> Jira, MS Excel </span>
+                <span class="fact-pill"><strong>Research & Development:</strong> Google Scholars, Semantic Scholar, Chat GPT, Claude </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ TECHNICAL DETAILS ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <div class="info-card">
+            <h3 class="info-card-title">Technical Details</h3>
+            <div class="info-card-body">
+              <div class="tools-list">
+                <span class="tool-tag">Blueprints</span>
+                <span class="tool-tag">C++</span>
+                <span class="tool-tag">Game Programming</span>
+                <span class="tool-tag">Scripting</span>
+                <span class="tool-tag">Rhythm System Design</span>
+                <span class="tool-tag">Narrative Design</span>
+                <span class="tool-tag">Level Design</span>
+                <span class="tool-tag">Save Systems</span>
+                <span class="tool-tag">Sound Design</span>
+                <span class="tool-tag">3D Animation</span>
+                <span class="tool-tag">Environment Design</span>
+                <span class="tool-tag">3D Props</span>
+                <span class="tool-tag">Character Rigging</span>
+                <span class="tool-tag">Rhythm Mechanics</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- ══════ GAME FEATURES (repeatable block) ══════ -->
         <div class="project-section-block" data-aos="fade-up">
-          <h3>Game Features</h3>
+         <!-- <h3>Game Features</h3>-->
 
           <!-- ─────────────────────────────────────────────────────────
                FEATURE CARD 1
@@ -419,20 +500,34 @@
                Duplicate this entire .feature-block to add Feature 02, 03, etc.
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Shrine-Based Rhythm Challenges</h4>
+            <h4>Rhythm Gameplay: From Basic to Stunning</h4>
 
-            <!-- Description -->
-            <p>Sayo undertakes shrine-based rhythm challenges and collects drum artifacts as part of his initiation into the Ayan drumming guild, translating real-life drumming practices into interactive mechanics.</p>
-            <p>This embeds cultural meaning directly into gameplay while reinforcing the narrative progression of the story.</p>
+            <!-- Description — scrollable, justified, split into paragraphs just like Project Overview -->
+            <div class="feature-description">
+              <p>The rhythm gameplay began with a simple prototype. While the core mechanics were functional, the presentation felt visually plain and lacked the level of immersion needed to deliver the intended player experience.</p>
+              <p>In the initial implementation, rhythm notes were generated using Tick events. However, this caused synchronization issues, as the notes would gradually fall out of sync with the background music on different PCs due to varying frame rates. To solve this, I replaced the Tick-based system with Unreal Engine's Quartz Clock system, allowing the notes to be scheduled against the audio timeline instead of the frame rate. This resulted in much more accurate and consistent synchronization across different hardware.</p>
+              <p>Through several rounds of prototyping and iteration, the rhythm gameplay evolved from a basic functional prototype into a polished experience that better captured the intended feel, both visually and mechanically.</p>
+            </div>
 
             <!-- GIFs (optional) — replace src with your real gif(s) or mp4 clip(s), add/remove .screenshot-item entries, or delete this whole block if none.
                  MP4s are far more optimized than GIFs for the same "looping clip" effect — use a <video> tag like below instead of <img> for mp4s. -->
             <div class="feature-media-group">
-              <h5>GIFs</h5>
+              <!--<h5>GIFs</h5>-->
               <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <video autoplay loop muted playsinline>
-                    <source src="assets/img/the-songs-of-ayan/feature-1.mp4" type="video/mp4">
+                    <source src="assets/video/rhythm_gif_01.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-media-group">
+              <!--<h5>GIFs</h5>-->
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/rhythm_gif_03.mp4" type="video/mp4">
                   </video>
                 </div>
               </div>
@@ -458,7 +553,9 @@
           <div class="feature-block">
             <h4>Feature 02 Title (Placeholder)</h4>
 
-            <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+            <div class="feature-description">
+              <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+            </div>
 
             <div class="feature-media-group">
               <h5>GIFs</h5>
@@ -493,7 +590,9 @@
           <div class="feature-block">
             <h4>Feature 03 Title (Placeholder)</h4>
 
-            <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+            <div class="feature-description">
+              <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+            </div>
 
             <div class="feature-media-group">
               <h5>GIFs</h5>
@@ -532,9 +631,6 @@
         <div class="project-section-block" data-aos="fade-up">
           <h3>Gallery</h3>
           <div class="screenshot-grid">
-            <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/portfolio/the-songs-of-ayan/ss" alt="Title Screen">
-            </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
               <img src="assets/img/the-songs-of-ayan/SS01.png" alt="Screenshot">
             </div>
