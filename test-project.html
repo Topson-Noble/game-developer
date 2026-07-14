@@ -257,8 +257,7 @@
     }
 
     .feature-media-grid .screenshot-item {
-      flex: 0 1 360px;
-      width: min(360px, 100%);
+      flex: 0 0 calc((100% - 2.5rem) / 3);
       max-width: calc((100% - 2.5rem) / 3);
     }
 
@@ -388,7 +387,7 @@
 
         <!-- ══════ TITLE + SHORT DESCRIPTION ══════ -->
         <div class="container section-title" data-aos="fade-up">
-          <h2>The Songs Of Ayan</h2>
+          <h2>The Songs Of <span style="color:#136ac1;">Ayan</span></h2>
           <p>A narrative-based rhythm game.</p>
         </div>
 
@@ -429,7 +428,7 @@
              justified + clearly spaced (see .info-card p CSS rule). -->
         <div class="project-section-block" data-aos="fade-up">
           <div class="info-card">
-            <h3 class="info-card-title">Project Overview</h3>
+            <h3 class="info-card-title">Project <span style="color:#136ac1;">Overview</span></h3>
             <div class="info-card-body">
 
               <p>>>> The Songs of Ayan is a short narrative rhythm game where every beat carries meaning and every rhythm challenge has a significance.</p>
@@ -455,8 +454,8 @@
             <div class="info-card-body">
               <div class="quick-facts">
                 <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.7.4 </span>
-                <span class="fact-pill"><strong>3D Assets Creation:</strong> Maya & Blender </span>
-                <span class="fact-pill"><strong>Sound Design:</strong> FL Studio </span>
+                <span class="fact-pill"><strong>Assets Creation:</strong> Maya, Blender, Substance Painter, Photoshop </span>
+                <span class="fact-pill"><strong>Sound Design & Musical Composition:</strong> FL Studio, Adobe Audition </span>
                 <span class="fact-pill"><strong>Game Design:</strong> Miro, Canva, Draw IO, Google Docs </span>
                 <span class="fact-pill"><strong>Project Management:</strong> Jira, MS Excel </span>
                 <span class="fact-pill"><strong>Research & Development:</strong> Google Scholars, Semantic Scholar, Chat GPT, Claude </span>
@@ -468,14 +467,16 @@
         <!-- ══════ TECHNICAL DETAILS ══════ -->
         <div class="project-section-block" data-aos="fade-up">
           <div class="info-card">
-            <h3 class="info-card-title">Technical Details</h3>
+            <h3 class="info-card-title">Technical <span style="color:#136ac1;">Details</span></h3>
             <div class="info-card-body">
               <div class="tools-list">
+                <span class="tool-tag">Game Programming</span>
+                <span class="tool-tag">Game Design</span>
                 <span class="tool-tag">Blueprints</span>
                 <span class="tool-tag">C++</span>
-                <span class="tool-tag">Game Programming</span>
                 <span class="tool-tag">Scripting</span>
                 <span class="tool-tag">Rhythm System Design</span>
+                <span class="tool-tag">Quartz Clock System</span>
                 <span class="tool-tag">Narrative Design</span>
                 <span class="tool-tag">Level Design</span>
                 <span class="tool-tag">Save Systems</span>
@@ -500,7 +501,7 @@
                Duplicate this entire .feature-block to add Feature 02, 03, etc.
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Rhythm Gameplay: From Basic to Stunning</h4>
+            <h4>Rhythm Gameplay: <span style="color:#136ac1;">From Functional to Immersive</span></h4>
 
             <!-- Description — scrollable, justified, split into paragraphs just like Project Overview -->
             <div class="feature-description">
@@ -519,79 +520,110 @@
                     <source src="assets/video/rhythm_gif_01.mp4" type="video/mp4">
                   </video>
                 </div>
-              </div>
-            </div>
 
-            <div class="feature-media-group">
-              <!--<h5>GIFs</h5>-->
-              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/rhythm_gif_02a.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/rhythm_gif_02b.mp4" type="video/mp4">
+                  </video>
+                </div>                
+
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <video autoplay loop muted playsinline>
                     <source src="assets/video/rhythm_gif_03.mp4" type="video/mp4">
                   </video>
-                </div>
-              </div>
-            </div>
+                </div>                
 
-            <!-- Screenshots (optional) — replace src with your real screenshot(s), add/remove .screenshot-item entries, or delete this whole block if none -->
-            <div class="feature-media-group">
-              <h5>Screenshots</h5>
-              <div class="screenshot-grid feature-media-grid">
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Shrine Rhythm Challenge Screenshot 1">
-                </div>
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+2" alt="Shrine Rhythm Challenge Screenshot 2">
-                </div>
               </div>
-            </div>
+            </div>  
           </div>
 
           <!-- ─────────────────────────────────────────────────────────
                FEATURE CARD 2 — placeholder, replace title/description/media
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Feature 02 Title (Placeholder)</h4>
+            <h4>Loop Refinement: <span style="color:#136ac1;">From fragmented to cohesive</span></h4>
 
             <div class="feature-description">
-              <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+              <p>The early version featured numerous mechanics, including realm travel, platforming, shrine sacrifices, rhythm fragment collection, and drum artifacts. While these systems worked individually, they competed for the player's attention, resulting in a fragmented experience with an unclear gameplay focus.</p>
+              <p>After several rounds of iteration, the gameplay was streamlined into a more cohesive progression. Environmental exploration naturally leads players to narrative-driven shrines, where rhythm challenges reward new ceremonial drums that unlock the next stage of the journey..</p>
+              <p>This refinement transformed the game from a collection of disconnected mechanics into a focused gameplay loop where exploration, narrative, and rhythm work together to deliver the intended player experience.</p>
+              
             </div>
 
+            <!-- GIFs/MP4 (optional) -->
             <div class="feature-media-group">
-              <h5>GIFs</h5>
+            <h5>Early Concept</h5>
               <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
                   <video autoplay loop muted playsinline>
-                    <source src="assets/img/the-songs-of-ayan/feature-2.mp4" type="video/mp4">
+                    <source src="assets/video/soa_old_01.mp4" type="video/mp4">
                   </video>
                 </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/soa_old_02.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/soa_old_03.mp4" type="video/mp4">
+                  </video>
+                </div>                               
+              </div>
+
+            <div class="feature-media-group">
+            <h5>Current Concept</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/soa_new_01.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/soa_new_02.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/soa_new_03.mp4" type="video/mp4">
+                  </video>
+                </div>                               
               </div>
             </div>
 
             <div class="feature-media-group">
               <h5>Screenshots</h5>
               <div class="screenshot-grid feature-media-grid">
+
                 <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Feature 02 Screenshot 1">
+                  <img src="assets/img/the-songs-of-ayan/core loop.png" alt="Screenshot">
                 </div>
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+2" alt="Feature 02 Screenshot 2">
-                </div>
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+3" alt="Feature 02 Screenshot 3">
-                </div>
+
               </div>
             </div>
+          </div>
           </div>
 
           <!-- ─────────────────────────────────────────────────────────
                FEATURE CARD 3 — placeholder, replace title/description/media
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Feature 03 Title (Placeholder)</h4>
+            <h4>Concept Evolution: <span style="color:#136ac1;">From Exploratory to Purpose-Driven</span></h4>
 
             <div class="feature-description">
-              <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+              <p>During pre-production, I rapidly prototyped six different gameplay concepts, including environmental puzzles, platforming, spiritual exploration, survival rhythm mechanics, and escort-style gameplay. Although many of these ideas were promising, they did not fully support the narrative-rhythm experience defined by my thesis.</p>
+              <p>Rather than forcing every mechanic into a single game, I evaluated each prototype, retained the ideas that best reinforced the core vision, and discarded the rest. This iterative process ultimately shaped the focused gameplay loop found in the final experience.</p>
             </div>
 
             <div class="feature-media-group">
