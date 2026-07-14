@@ -200,6 +200,23 @@
       50%       { transform: rotate(45deg) translateY(6px); opacity: 1; }
     }
 
+    /* =====================================================
+       BIO TEXT — justified paragraphs with clear spacing
+       =====================================================
+       Scoped to .bio-text only, so nothing else on the page
+       is affected. Each paragraph inside .bio-text gets
+       justified alignment + a clear gap below it; the last
+       paragraph has no extra gap.
+    */
+    .bio-text p {
+      text-align: justify;
+      margin-bottom: 1rem;
+    }
+
+    .bio-text p:last-child {
+      margin-bottom: 0;
+    }
+
   </style>
 </head>
 
@@ -245,7 +262,22 @@
             <div class="hero-content">
               <h1 data-aos="fade-up" data-aos-delay="200">Hello, I'm <span class="highlight">Temitope Falade</span></h1>
               <h2 data-aos="fade-up" data-aos-delay="300">Creative <span class="typed" data-typed-items="Game Developer, Game Programmer, Technical Designer"></span></h2>
-              <p data-aos="fade-up" data-aos-delay="400">I'm a Game Developer/Programmer with 2 years of professional experience, working mainly with Unreal Engine 5 using Blueprints and C++. I specialize in creating scalable and flexible gameplay systems including AI, combat, health, save/load, pathfinding, and animation systems. I value collaborative work, and as a fast-learner, I can quickly get up to speed and adapt to new workflows.</p>
+              <!-- ══════ BIO — justified, 3 clear paragraphs ══════
+                   Add/edit paragraphs freely inside .bio-text — each
+                   <p> automatically gets justify alignment + spacing
+                   below it (see .bio-text CSS rule up in <style>). -->
+              <div class="bio-text" data-aos="fade-up" data-aos-delay="400">
+
+                <!-- Paragraph 1: Role & experience -->
+                <p>I'm a Game Developer/Programmer with 2 years of professional experience, working mainly with Unreal Engine 5 using Blueprints and C++.</p>
+
+                <!-- Paragraph 2: Specialization -->
+                <p>I specialize in creating scalable and flexible gameplay systems including AI, combat, health, save/load, pathfinding, and animation systems.</p>
+
+                <!-- Paragraph 3: Work style -->
+                <p>I value collaborative work, and as a fast-learner, I can quickly get up to speed and adapt to new workflows.</p>
+
+              </div>
               <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
                 <a href="game-projects.html" class="btn btn-primary">View My Works</a>
             
