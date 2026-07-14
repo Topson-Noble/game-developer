@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Fantasy Adventure Game - Game Project</title>
+  <title>The Songs Of Ayan - Game Project</title>
 
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
@@ -25,6 +25,51 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
+    /* ══════════════════════════════════════════════════════════
+       PROJECT PAGE TEMPLATE — consistent structure for all games
+       Sections: Back(top) → Title → Quick Facts → Video →
+       Actions (Download/GitHub) → Overview → Tools Used →
+       Game Features (repeatable) → Gallery → Back(bottom)
+       ══════════════════════════════════════════════════════════ */
+
+    /* ── Back button (top) ── */
+    .back-btn-top {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .back-btn {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Quick Facts strip ── */
+    .quick-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      justify-content: center;
+      margin: 1.25rem 0 2rem;
+    }
+
+    .quick-facts .fact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.8rem;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .quick-facts .fact-pill strong {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
     /* ── Video ── */
     .project-video iframe {
       width: 100%;
@@ -32,66 +77,155 @@
       border-radius: 10px;
     }
 
-    /* ── Description Grid ── */
-    .description-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+    /* ── Action buttons row (Download + GitHub) ── */
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
       margin-bottom: 3rem;
     }
 
-    @media (max-width: 991px) {
-      .description-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .project-actions .btn {
+      min-width: 220px;
     }
 
-    @media (max-width: 575px) {
-      .description-grid {
-        grid-template-columns: 1fr;
-      }
+    /* ── Section headings ── */
+    .project-section-block {
+      margin-bottom: 3rem;
     }
 
-    .desc-card {
-      height: 260px;
-      border: 1px solid rgba(255, 255, 255, 0.75);
+    .project-section-block > h3 {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    /* ── Overview / Tools / Technical Details card ──
+       The section header now lives INSIDE the card as a title bar.
+       Only .info-card-body scrolls (not the whole card), so the
+       header stays visible the whole time, even while the text
+       below it is being scrolled. */
+    .info-card {
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 10px;
-      padding: 1.1rem 1rem 1rem 1.1rem;
+      background: rgba(255, 255, 255, 0.03);
+      overflow: hidden; /* clips the title bar's corners to match the card's rounded corners */
+
+      max-width: 1400px;      /* Control the card's width here*/
+      margin: 0 auto;
+    }
+
+    .info-card-title {
+      margin: 0;
+      padding: 1rem 1.5rem 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .info-card-body {
+      padding: 1.25rem 1.5rem;
+
+      max-height: 160px;       /* ← ADJUST THIS to control the scrollable body's height */
+      overflow-y: auto;        /* shows a scrollbar only when content overflows */
+      overflow-x: hidden;
+    }
+
+    .info-card p {
+      color: #ffffff;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .info-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Tools Used tags ──
+       justify-content: center keeps tags centered as a group.
+       flex-wrap already sends overflow tags to a new line automatically
+       once the row runs out of horizontal space in .info-card. */
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .tools-list .tool-tag {
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.85rem;
+      color: #ffffff;
+    }
+
+    /* ── Game Features (repeatable block) ── */
+    .feature-block {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .feature-block h4 {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.15rem;
+      margin: 0 0 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* faded line below the title */
+    }
+
+    /* ── Feature description — scrollable, justified, same behavior
+       as the Project Overview card. Only this block scrolls; the
+       title above and the media below it stay fully visible. ── */
+    .feature-description {
+      max-height: 160px;       /* ← ADJUST THIS to control the scrollable area's height */
       overflow-y: auto;
       overflow-x: hidden;
-      background: transparent;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.5) transparent;
+      padding-right: 0.75rem;  /* ← keeps text clear of the scrollbar */
+      padding-left: 0.1rem;    /* small matching space on the left for visual balance */
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* demarcation line before the media below */
     }
 
-    .desc-card::-webkit-scrollbar {
-      width: 6px;
+    .feature-description p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      text-align: justify;
     }
 
-    .desc-card::-webkit-scrollbar-track {
-      background: transparent;
+    .feature-description p:last-child {
+      margin-bottom: 0;
     }
 
-    .desc-card::-webkit-scrollbar-thumb {
-      background-color: rgba(255,255,255,0.45);
-      border-radius: 10px;
+    /* Sub-group label inside a feature card (GIFs / Screenshots) */
+    .feature-media-group {
+      margin-top: 1.5rem;
     }
 
-    .desc-card h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.55rem;
+    /* ── PICKY-TOUCH OVERRIDE ──
+       Makes the "GIFS" / "SCREENSHOTS" sub-labels match the feature
+       title (h4) font/style exactly. Delete this whole rule (and the
+       .feature-media-group h5 rule above it becomes unused) to revert
+       these labels back to a smaller, muted, uppercase look instead. */
+    .feature-media-group h5 {
+      font-weight: 700;
       color: #ffffff;
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
     }
 
-    .desc-card p {
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: #ffffff;
-      margin-bottom: 0.4rem;
-    }
-
-    /* ── Screenshot Grid ── */
+    /* ── Gallery / Screenshot Grid ── */
     .screenshot-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -111,6 +245,36 @@
       }
     }
 
+    /* ── Game Features media grid — same sizing as the Gallery grid above,
+       but centers items instead of stretching them across 3 fixed columns.
+       1 item = centered single item. 2 items = centered pair. 3+ items =
+       wraps and fills rows just like the Gallery grid. ── */
+    .feature-media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .feature-media-grid .screenshot-item {
+      flex: 0 0 calc((100% - 2.5rem) / 3);
+      max-width: calc((100% - 2.5rem) / 3);
+    }
+
+    @media (max-width: 767px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: calc((100% - 1.25rem) / 2);
+        max-width: calc((100% - 1.25rem) / 2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+
     .screenshot-item {
       aspect-ratio: 16 / 9;
       overflow: hidden;
@@ -119,7 +283,8 @@
       cursor: pointer;
     }
 
-    .screenshot-item img {
+    .screenshot-item img,
+    .screenshot-item video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -127,7 +292,8 @@
       transition: transform 0.3s ease;
     }
 
-    .screenshot-item:hover img {
+    .screenshot-item:hover img,
+    .screenshot-item:hover video {
       transform: scale(1.06);
     }
 
@@ -189,15 +355,130 @@
       background: rgba(0,0,0,0.9);
     }
 
-    /* ── Back button spacing ── */
-    .back-btn {
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
+    /* ── Zigzag Flow layout for Concept Evolution feature ── */
+    .flow-zigzag {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0;
+      padding: 0 2rem;
     }
 
-    /* ── Download section ── */
-    .project-download {
-      margin-bottom: 2.5rem;
+    .flow-row {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .flow-row-reverse {
+      flex-direction: row-reverse;
+    }
+
+    .flow-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0 0 calc((100% - 6rem) / 3);
+      max-width: calc((100% - 6rem) / 3);
+      min-width: 0;
+    }
+
+    .flow-item .screenshot-item {
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .flow-label {
+      width: 100%;
+      background: #000000;
+      color: #ffffff;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.5rem 0.4rem;
+      border: 1.5px solid #c8c8d0;
+      border-top: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      margin-top: -1px;
+      line-height: 1.4;
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+      padding-top: 2.8rem;
+      width: 2rem;
+    }
+
+    .flow-arrow svg {
+      width: 2rem;
+      height: 2rem;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+    }
+
+    /* Connector row between the two flow rows */
+    .flow-connector-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 0.25rem 0;
+    }
+
+    .flow-connector-spacer {
+      flex: 0 0 calc((100% - 6rem) / 3);
+      max-width: calc((100% - 6rem) / 3);
+    }
+
+    .flow-connector-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+      width: 2rem;
+    }
+
+    .flow-connector-arrow svg {
+      width: 2rem;
+      height: 2rem;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+    }
+
+    @media (max-width: 767px) {
+      .flow-zigzag {
+        padding: 0 0.5rem;
+      }
+      .flow-row {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .flow-item {
+        flex: 0 0 calc((100% - 1.5rem) / 2);
+        max-width: calc((100% - 1.5rem) / 2);
+      }
+      .flow-arrow {
+        display: none;
+      }
+      .flow-connector-row {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .flow-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -221,16 +502,31 @@
   <main class="main">
 
     <section id="project-details" class="portfolio section">
+      <div class="container" data-aos="fade-up">
 
-      <!-- Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>The Aurora Snow Slingers</h2>
-        <p>A fast-paced, lighthearted action experience developed for the Aurora Game Jam 2025.</p>
-      </div>
+        <!-- ══════ BACK BUTTON (TOP) ══════ -->
+        <div class="back-btn-top" data-aos="fade-up">
+          <a href="game-projects.html" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Back to Game Projects
+          </a>
+        </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <!-- ══════ TITLE + SHORT DESCRIPTION ══════ -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>The Aurora Snow Slingers</span></h2>
+          <p>A fast-paced, lighthearted action experience developed for the Aurora Game Jam 2025.</p>
+        </div>
 
-        <!-- Gameplay Video -->
+        <!-- ══════ QUICK FACTS STRIP ══════ -->
+        <!-- Edit/add pills as needed per project: Engine, Platform, Role, Team, Duration, Status -->
+        <div class="quick-facts" data-aos="fade-up">
+          <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.7.4</span>
+          <span class="fact-pill"><strong>Platform:</strong> PC (Windows)</span>
+          <span class="fact-pill"><strong>Role:</strong> Solo Developer</span>
+          <span class="fact-pill"><strong>Focus:</strong> AI Difficulty Tiers, Combat Mechanics, &amp; Aurora Shader</span>
+        </div>
+
+        <!-- ══════ GAMEPLAY VIDEO ══════ -->
         <div class="ratio ratio-16x9 mb-4">
           <iframe
             src="https://player.vimeo.com/video/1152576912"
@@ -241,100 +537,233 @@
           </iframe>
         </div>
 
-        <!-- Download Link -->
-        <div class="project-download">
-          <h3>Download Game</h3>
-          <p>You can download and play the game using the link below:</p>
+        <!-- ══════ ACTION BUTTONS: DOWNLOAD + GITHUB ══════ -->
+        <div class="project-actions" data-aos="fade-up" data-aos-delay="150">
           <a href="https://topzone.itch.io/the-aurora-snow-slingers" target="_blank" class="btn btn-primary">
-            <i class="bi bi-download"></i> Download
+            <i class="bi bi-download"></i> Download Game
+          </a>
+          <!-- GitHub button — same style as Download. On by default; replace the href with
+               the project's real repo link, or delete this whole <a> if the project has no public repo. -->
+          <a href="https://github.com/your-username/your-repo" target="_blank" class="btn btn-primary">
+            <i class="bi bi-github"></i> View on GitHub
           </a>
         </div>
 
-        <!-- ── Description Grid ── -->
-        <div class="description-grid" data-aos="fade-up">
+        <!-- ══════ PROJECT OVERVIEW ══════
+             Header now lives inside the card and stays visible even
+             while the body below it scrolls. Paragraphs remain
+             justified + clearly spaced (see .info-card p CSS rule). -->
+        <div class="project-section-block" data-aos="fade-up">
+          <div class="info-card">
+            <h3 class="info-card-title">Project Overview</span></h3>
+            <div class="info-card-body">
 
-          <!-- Project Overview -->
-          <div class="desc-card">
-            <h4>Project Overview</h4>
-            <p>The Aurora Snow Slingers is a concise, lighthearted action experience developed for the Aurora Game Jam, part of the REPLAY Game Design Master's Degree Program.</p>
+              <p>>>> The Aurora Snow Slingers is a concise, lighthearted action experience developed for the Aurora Game Jam, part of the REPLAY Game Design Master’s Degree Program.</p>
+
+              <p>>>> Guided by the theme "Echo of the Polar Night," the project interprets an echo as more than sound. It represents the lingering memory of a childhood snowball fight, where the dancing aurora, peaceful snowy landscape, and echoing laughter of children come together to evoke a warm sense of nostalgia.</p>
+
+              <p>>>> Players enter a circular snow-fight arena populated with snowmen, igloos, and snow walls that provide tactical cover. Within this arena, the game attempts to emulate a simplified form of real-world snowball-fight mechanics. The player can run, collect individual snowballs from the ground, and manually launch them toward an opponent. This design encourages deliberate, skill-based play, requiring each throw to be purposeful rather than relying on rapid, repeated attacks.</p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ TOOLS USED ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <div class="info-card">
+            <h3 class="info-card-title">Tools</h3>
+            <div class="info-card-body">
+              <div class="quick-facts">
+                <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.7.4 </span>
+                <span class="fact-pill"><strong>Assets Creation:</strong> Maya, Substance Painter, Photoshop </span>
+                <span class="fact-pill"><strong>Sounds:</strong> Free Online SFX </span>
+                <span class="fact-pill"><strong>Game Design:</strong> Miro Board, Google Docs </span>
+                <span class="fact-pill"><strong>Project Management:</strong> Jira </span>
+                <span class="fact-pill"><strong>Research & Development:</strong> Winter trip to Rovaniemi (Lapland) in Finland </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ TECHNICAL DETAILS ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <div class="info-card">
+            <h3 class="info-card-title">Technical Details</h3>
+            <div class="info-card-body">
+              <div class="tools-list">
+                <span class="tool-tag">Game Programming</span>
+                <span class="tool-tag">Game Design</span>
+                <span class="tool-tag">Blueprints</span>
+                <span class="tool-tag">C++</span>
+                <span class="tool-tag">Scripting</span>
+                <span class="tool-tag">AI Behavior Tree</span>
+                <span class="tool-tag">AI Crowds</span>
+                <span class="tool-tag">Snowball Combat Design</span>
+                <span class="tool-tag">Health and Damage System</span>
+                <span class="tool-tag">State Machines</span>
+                <span class="tool-tag">Level Design</span>
+                <span class="tool-tag">Save Systems</span>
+                <span class="tool-tag">Aurora Shader</span>
+                <span class="tool-tag">3D Animation</span>
+                <span class="tool-tag">Environment Design</span>
+                <span class="tool-tag">3D Props</span>
+                <span class="tool-tag">Character Rigging</span>
+                <span class="tool-tag">Gameplay Optimization</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ GAME FEATURES (repeatable block) ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+         <!-- <h3>Game Features</h3>-->
+
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 1
+               Structure: Title → Description → GIFs (optional) → Screenshots (optional)
+               Duplicate this entire .feature-block to add Feature 02, 03, etc.
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4><span style="color:#136ac1;">Adaptive AI Opponents</span></h4>
+
+            <!-- Description — scrollable, justified, split into paragraphs just like Project Overview -->
+            <div class="feature-description">
+              <p> Although the original concept targeted player-versus-player gameplay, the game jam prototype was intentionally scoped around AI opponent with multiple difficulty tiers, allowing the core snowball combat experience to be fully realized within the available development time.</p>
+            </div>
+
+            <!-- GIFs (optional) — replace src with your real gif(s) or mp4 clip(s), add/remove .screenshot-item entries, or delete this whole block if none.
+                 MP4s are far more optimized than GIFs for the same "looping clip" effect — use a <video> tag like below instead of <img> for mp4s. -->
+            <div class="feature-media-group">
+              <!--<h5>GIFs</h5>-->
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/aurora_difficulty_select.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/aurora_behavior_tree.mp4" type="video/mp4">
+                  </video>
+                </div>             
+
+              </div>
+            </div>  
           </div>
 
-          <!-- Gameplay Concept -->
-          <div class="desc-card">
-            <h4>Gameplay Concept</h4>
-            <p>Guided by the theme "Echo of the Polar Night," the project interprets the idea of an echo not as sound alone, but as the reverberation of joyful childhood memories, specifically the bright laughter and spirited energy of kids engaged in a friendly snowball fight beneath the dancing aurora.</p>
-            <p>The game is designed to evoke a sense of nostalgia, presenting a fictional yet emotionally familiar moment: friends playing in the snow during the long polar night, illuminated by the aurora's movement overhead.</p>
-            <p>Players enter a circular snow-fight arena populated with snowmen, igloos, and snow walls that provide tactical cover. Within this arena, the game attempts to emulate a simplified form of real-world snowball-fight mechanics. The player can run, collect individual snowballs from the ground, and manually launch them toward an opponent. This design encourages deliberate, skill-based play, requiring each throw to be purposeful rather than relying on rapid, repeated attacks.</p>
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 2 — placeholder, replace title/description/media
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4><span style="color:#136ac1;">Dancing Aurora System</span></h4>
+
+            <div class="feature-description">
+              <p>Above the snowball fighting arena, a dynamic aurora illuminates the snowy landscape, enhancing its calm and reflective atmosphere while visually embodying the game jam's "Echo of the Polar Night" theme.</p>
+              <p>Following each snowball match, the camera pans upward to encourage players to pause and appreciate the aurora, inspired by my own first experience witnessing it in Rovaniemi.</p>
+            </div>
+
+            <!-- GIFs/MP4 (optional) -->
+            <div class="feature-media-group">
+            <!--<h5>Early Concept</h5>-->
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/aurora_looping.mp4" type="video/mp4">
+                  </video>
+                </div>
+            
+          </div>
+          </div>
           </div>
 
-          <!-- Design & Aesthetics -->
-          <div class="desc-card">
-            <h4>Design &amp; Aesthetics</h4>
-            <p>- <strong>Visual Style:</strong> Vibrant and colorful, with the aurora in the sky to beautify the scenery and also serve as the main source of lighting to the environment.</p>
-            <p>- <strong>Character Design:</strong> Character reused for player's character, AI, and background NPCs.</p>
-            <p>- <strong>Audio:</strong> A fast-paced action music that drives the energy of the gameplay.</p>
-            <p>- <strong>UI:</strong> UI design that clearly communicates to the player.</p>
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 3 — placeholder, replace title/description/media
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4><span style="color:#136ac1;">Echoes of Childhood</span></h4>
+
+            <div class="feature-description">
+                <p>Children surround the arena, cheering throughout the match to create the feeling of a lively community gathered around a friendly snowball fight.</p>
+                <p>Their cheers echo across the arena, capturing the lingering memory of a childhood snowball fight and reinforcing the game's nostalgic interpretation of the "Echo of the Polar Night" theme.</p>
+            </div>
+
+            <div class="feature-media-group">
+                          <!--<h5>GIFs</h5>-->
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/aurora_children_crowds.mp4" type="video/mp4">
+                  </video>
+                </div>
+            </div>
           </div>
 
-          <!-- Development Details -->
-          <div class="desc-card">
-            <h4>Development Details</h4>
-            <p>- <strong>Engine:</strong> Unreal Engine 5.5.4</p>
-            <p>- <strong>Development Focus:</strong> Snowball projectiles mechanics; health system; difficulty mode selection tied to AI's behaviour trees logic.</p>
-            <p>- <strong>Role:</strong> Responsible for 3d assets creation, game design, and gameplay and UI programming.</p>
-            <p>- <strong>Dev Status:</strong> Current prototype is a player-vs-AI mode. Future update to include a player-vs-player mode.</p>
-            <p>- <strong>Platforms:</strong> PC (Windows), with potential scalability for web or mobile builds.</p>
-          </div>
+           <!-- <div class="feature-media-group">
+              <h5>Screenshots</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Feature 03 Screenshot 1">
+                </div>
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+2" alt="Feature 03 Screenshot 2">
+                </div>
+              </div>
+            </div>
+          </div>-->
 
-        </div><!-- /description-grid -->
+          <!-- Add more feature cards below by duplicating any block above. -->
 
-        <!-- ── Screenshots Grid ── -->
-        <div class="project-section" data-aos="fade-up">
-          <h4>Screenshots</h4>
-          <div class="screenshot-grid">
+        </div>
+
+        <!-- ══════ GALLERY ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <h3>Gallery</h3>
+          <div class="screenshot-grid feature-media-grid">
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/title.png" alt="Title Screen">
+              <img src="assets/img/aurora_snow_slingers/title.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
               <img src="assets/img/aurora_snow_slingers/screenshot.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/Reference Image of Game.png" alt="Reference Image">
+              <img src="assets/img/aurora_snow_slingers/Reference Image of Game.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/pause screen.png" alt="Pause Screen">
+              <img src="assets/img/aurora_snow_slingers/pause screen.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/game play.png" alt="Gameplay">
+              <img src="assets/img/aurora_snow_slingers/game play.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/environment.png" alt="Environment">
+              <img src="assets/img/aurora_snow_slingers/environment.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/difficulty select.png" alt="Difficulty Select">
-            <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/Aurora_Shader_Graph.png" alt="Difficulty Select">
-            </div>
+              <img src="assets/img/aurora_snow_slingers/difficulty select.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/AI_Behaviour_Tree_Graph.png" alt="Difficulty Select">
+              <img src="assets/img/aurora_snow_slingers/Aurora_Shader_Graph.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/AI_Blueprint_Graph.png" alt="Difficulty Select">
+              <img src="assets/img/aurora_snow_slingers/AI_Behaviour_Tree_Graph.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/aurora_snow_slingers/Character BP.png" alt="Difficulty Select">
+              <img src="assets/img/aurora_snow_slingers/AI_Blueprint_Graph.png" alt="Screenshot">
+            </div>
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/aurora_snow_slingers/Character BP.png" alt="Screenshot">
             </div>
           </div>
         </div>
 
-        <!-- Back Button -->
+        <!-- ══════ BACK BUTTON (BOTTOM) ══════ -->
         <div class="text-center back-btn" data-aos="fade-up">
-          <a href="game-projects.html" class="btn btn-primary">Back to Game Projects</a>
+          <a href="game-projects.html" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Back to Game Projects
+          </a>
         </div>
 
       </div>
-
     </section>
 
   </main>
@@ -344,6 +773,7 @@
     <div class="lightbox-frame" id="lightbox-frame">
       <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">&times;</button>
       <img id="lightbox-img" src="" alt="">
+      <video id="lightbox-video" controls loop style="display:none; max-width:72vw; max-height:80vh; border-radius:12px;"></video>
     </div>
   </div>
 
@@ -372,17 +802,35 @@
 
   <script>
     function openLightbox(cardEl) {
-      const src = cardEl.querySelector('img').src;
-      const alt = cardEl.querySelector('img').alt;
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-img').alt = alt;
+      const imgEl = cardEl.querySelector('img');
+      const videoEl = cardEl.querySelector('video');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxVideo = document.getElementById('lightbox-video');
+
+      if (videoEl) {
+        const src = videoEl.querySelector('source').src;
+        lightboxVideo.innerHTML = `<source src="${src}" type="video/mp4">`;
+        lightboxVideo.style.display = 'block';
+        lightboxImg.style.display = 'none';
+        lightboxVideo.load();
+        lightboxVideo.play();
+      } else {
+        lightboxImg.src = imgEl.src;
+        lightboxImg.alt = imgEl.alt;
+        lightboxImg.style.display = 'block';
+        lightboxVideo.style.display = 'none';
+      }
+
       document.getElementById('lightbox-overlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
+      const lightboxVideo = document.getElementById('lightbox-video');
       document.getElementById('lightbox-overlay').classList.remove('active');
       document.getElementById('lightbox-img').src = '';
+      lightboxVideo.pause();
+      lightboxVideo.innerHTML = '';
       document.body.style.overflow = '';
     }
 
