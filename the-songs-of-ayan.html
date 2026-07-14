@@ -234,7 +234,8 @@
       cursor: pointer;
     }
 
-    .screenshot-item img {
+    .screenshot-item img,
+    .screenshot-item video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -242,7 +243,8 @@
       transition: transform 0.3s ease;
     }
 
-    .screenshot-item:hover img {
+    .screenshot-item:hover img,
+    .screenshot-item:hover video {
       transform: scale(1.06);
     }
 
@@ -352,7 +354,7 @@
         <!-- ══════ GAMEPLAY VIDEO ══════ -->
         <div class="ratio ratio-16x9 mb-4" data-aos="fade-up" data-aos-delay="100">
           <iframe
-            src="https://www.youtube.com/embed/SDUEfqjvKUM"
+            src="https://www.youtube.com/embed/XHvgcWV7uKs"
             title="The Songs Of Ayan Gameplay Video"
             frameborder="0"
             allowfullscreen>
@@ -384,24 +386,10 @@
 
         <!-- ══════ TOOLS USED ══════ -->
         <div class="project-section-block" data-aos="fade-up">
-          <h3>Tech Stack</h3>
+          <h3>Tools Used</h3>
           <div class="info-card">
             <div class="tools-list">
               <span class="tool-tag">Unreal Engine 5.7.4</span>
-              <span class="tool-tag">Blueprints</span>
-              <span class="tool-tag">Scripting</span>
-              <span class="tool-tag">Game Design</span>
-              <span class="tool-tag">Programming</span>
-              <span class="tool-tag">Logic</span>
-              <span class="tool-tag">Rhythm Mechanics</span>
-              <span class="tool-tag">Narrative Design</span>
-              <span class="tool-tag">Environmental Design</span>
-              <span class="tool-tag">Sound Design</span>
-              <span class="tool-tag">FL Studio</span>
-              <span class="tool-tag">Maya</span>
-              <span class="tool-tag">Clean Architecture</span>
-              <span class="tool-tag">Save System</span>
-              <span class="tool-tag">Level Design</span>
               <!-- Add more tags here as needed, e.g.: -->
               <!-- <span class="tool-tag">Blueprints</span> -->
               <!-- <span class="tool-tag">Maya</span> -->
@@ -426,12 +414,15 @@
             <p>Sayo undertakes shrine-based rhythm challenges and collects drum artifacts as part of his initiation into the Ayan drumming guild, translating real-life drumming practices into interactive mechanics.</p>
             <p>This embeds cultural meaning directly into gameplay while reinforcing the narrative progression of the story.</p>
 
-            <!-- GIFs (optional) — replace src with your real gif(s), add/remove .screenshot-item entries, or delete this whole block if none -->
+            <!-- GIFs (optional) — replace src with your real gif(s) or mp4 clip(s), add/remove .screenshot-item entries, or delete this whole block if none.
+                 MP4s are far more optimized than GIFs for the same "looping clip" effect — use a <video> tag like below instead of <img> for mp4s. -->
             <div class="feature-media-group">
               <h5>GIFs</h5>
               <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder" alt="Shrine Rhythm Challenge Gif">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/img/the-songs-of-ayan/feature-1.mp4" type="video/mp4">
+                  </video>
                 </div>
               </div>
             </div>
@@ -454,7 +445,7 @@
                FEATURE CARD 2 — placeholder, replace title/description/media
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Feature 02 Title (Placeholder Block)</h4>
+            <h4>Feature 02 Title (Placeholder)</h4>
 
             <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
 
@@ -462,7 +453,9 @@
               <h5>GIFs</h5>
               <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder" alt="Feature 02 Gif">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/img/the-songs-of-ayan/feature-2.mp4" type="video/mp4">
+                  </video>
                 </div>
               </div>
             </div>
@@ -495,10 +488,14 @@
               <h5>GIFs</h5>
               <div class="screenshot-grid feature-media-grid">
                 <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder+1" alt="Feature 03 Gif 1">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/img/the-songs-of-ayan/feature-3-clip1.mp4" type="video/mp4">
+                  </video>
                 </div>
                 <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder+2" alt="Feature 03 Gif 2">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/img/the-songs-of-ayan/feature-3-clip2.mp4" type="video/mp4">
+                  </video>
                 </div>
               </div>
             </div>
@@ -524,9 +521,6 @@
         <div class="project-section-block" data-aos="fade-up">
           <h3>Gallery</h3>
           <div class="screenshot-grid">
-            <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/portfolio/the-songs-of-ayan/ss" alt="Title Screen">
-            </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
               <img src="assets/img/the-songs-of-ayan/SS01.png" alt="Screenshot">
             </div>
@@ -583,6 +577,7 @@
     <div class="lightbox-frame" id="lightbox-frame">
       <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">&times;</button>
       <img id="lightbox-img" src="" alt="">
+      <video id="lightbox-video" controls loop style="display:none; max-width:72vw; max-height:80vh; border-radius:12px;"></video>
     </div>
   </div>
 
@@ -611,17 +606,35 @@
 
   <script>
     function openLightbox(cardEl) {
-      const src = cardEl.querySelector('img').src;
-      const alt = cardEl.querySelector('img').alt;
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-img').alt = alt;
+      const imgEl = cardEl.querySelector('img');
+      const videoEl = cardEl.querySelector('video');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxVideo = document.getElementById('lightbox-video');
+
+      if (videoEl) {
+        const src = videoEl.querySelector('source').src;
+        lightboxVideo.innerHTML = `<source src="${src}" type="video/mp4">`;
+        lightboxVideo.style.display = 'block';
+        lightboxImg.style.display = 'none';
+        lightboxVideo.load();
+        lightboxVideo.play();
+      } else {
+        lightboxImg.src = imgEl.src;
+        lightboxImg.alt = imgEl.alt;
+        lightboxImg.style.display = 'block';
+        lightboxVideo.style.display = 'none';
+      }
+
       document.getElementById('lightbox-overlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
+      const lightboxVideo = document.getElementById('lightbox-video');
       document.getElementById('lightbox-overlay').classList.remove('active');
       document.getElementById('lightbox-img').src = '';
+      lightboxVideo.pause();
+      lightboxVideo.innerHTML = '';
       document.body.style.overflow = '';
     }
 
