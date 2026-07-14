@@ -354,6 +354,132 @@
     .lightbox-close:hover {
       background: rgba(0,0,0,0.9);
     }
+
+    /* ── Zigzag Flow layout for Concept Evolution feature ── */
+    .flow-zigzag {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0;
+      padding: 0 2rem;
+    }
+
+    .flow-row {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .flow-row-reverse {
+      flex-direction: row-reverse;
+    }
+
+    .flow-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0 0 calc((100% - 6rem) / 3);
+      max-width: calc((100% - 6rem) / 3);
+      min-width: 0;
+    }
+
+    .flow-item .screenshot-item {
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .flow-label {
+      width: 100%;
+      background: #000000;
+      color: #ffffff;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.5rem 0.4rem;
+      border: 1.5px solid #c8c8d0;
+      border-top: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      margin-top: -1px;
+      line-height: 1.4;
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+      padding-top: 2.8rem;
+      width: 2rem;
+    }
+
+    .flow-arrow svg {
+      width: 2rem;
+      height: 2rem;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+    }
+
+    /* Connector row between the two flow rows */
+    .flow-connector-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 0.25rem 0;
+    }
+
+    .flow-connector-spacer {
+      flex: 0 0 calc((100% - 6rem) / 3);
+      max-width: calc((100% - 6rem) / 3);
+    }
+
+    .flow-connector-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+      width: 2rem;
+    }
+
+    .flow-connector-arrow svg {
+      width: 2rem;
+      height: 2rem;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+    }
+
+    @media (max-width: 767px) {
+      .flow-zigzag {
+        padding: 0 0.5rem;
+      }
+      .flow-row {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .flow-item {
+        flex: 0 0 calc((100% - 1.5rem) / 2);
+        max-width: calc((100% - 1.5rem) / 2);
+      }
+      .flow-arrow {
+        display: none;
+      }
+      .flow-connector-row {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .flow-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -387,7 +513,7 @@
 
         <!-- ══════ TITLE + SHORT DESCRIPTION ══════ -->
         <div class="container section-title" data-aos="fade-up">
-          <h2>The Songs Of <span style="color:#136ac1;">Ayan</span></h2>
+          <h2>The Songs Of Ayan</span></h2>
           <p>A narrative-based rhythm game.</p>
         </div>
 
@@ -428,7 +554,7 @@
              justified + clearly spaced (see .info-card p CSS rule). -->
         <div class="project-section-block" data-aos="fade-up">
           <div class="info-card">
-            <h3 class="info-card-title">Project <span style="color:#136ac1;">Overview</span></h3>
+            <h3 class="info-card-title">Project Overview</span></h3>
             <div class="info-card-body">
 
               <p>>>> The Songs of Ayan is a short narrative rhythm game where every beat carries meaning and every rhythm challenge has a significance.</p>
@@ -501,7 +627,7 @@
                Duplicate this entire .feature-block to add Feature 02, 03, etc.
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Rhythm Gameplay: <span style="color:#136ac1;">From Functional to Immersive</span></h4>
+            <h4><span style="color:#136ac1;">Rhythm Gameplay: </span>From Functional to Immersive</h4>
 
             <!-- Description — scrollable, justified, split into paragraphs just like Project Overview -->
             <div class="feature-description">
@@ -547,7 +673,7 @@
                FEATURE CARD 2 — placeholder, replace title/description/media
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Loop Refinement: <span style="color:#136ac1;">From fragmented to cohesive</span></h4>
+            <h4><span style="color:#136ac1;">Loop Refinement: </span>From fragmented to cohesive</h4>
 
             <div class="feature-description">
               <p>The early version featured numerous mechanics, including realm travel, platforming, shrine sacrifices, rhythm fragment collection, and drum artifacts. While these systems worked individually, they competed for the player's attention, resulting in a fragmented experience with an unclear gameplay focus.</p>
@@ -603,7 +729,7 @@
             </div>
 
             <div class="feature-media-group">
-              <h5>Screenshots</h5>
+             <!--  <h5>Screenshots</h5>-->
               <div class="screenshot-grid feature-media-grid">
 
                 <div class="screenshot-item" onclick="openLightbox(this)">
@@ -619,25 +745,79 @@
                FEATURE CARD 3 — placeholder, replace title/description/media
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Concept Evolution: <span style="color:#136ac1;">From Exploratory to Purpose-Driven</span></h4>
+            <h4><span style="color:#136ac1;">Concept Evolution: </span>From Exploratory to Purpose-Driven</h4>
 
             <div class="feature-description">
-              <p>During pre-production, I rapidly prototyped six different gameplay concepts, including environmental puzzles, platforming, spiritual exploration, survival rhythm mechanics, and escort-style gameplay. Although many of these ideas were promising, they did not fully support the narrative-rhythm experience defined by my thesis.</p>
+              <p>During pre-production, I rapidly prototyped different gameplay concepts, including AI escort-style gameplay, platforming, environmental puzzles, and survival-based rhythm mechanics. Although many of these ideas were promising, they did not fully support the narrative-rhythm experience defined by my thesis.</p>
               <p>Rather than forcing every mechanic into a single game, I evaluated each prototype, retained the ideas that best reinforced the core vision, and discarded the rest. This iterative process ultimately shaped the focused gameplay loop found in the final experience.</p>
             </div>
 
             <div class="feature-media-group">
-              <h5>GIFs</h5>
-              <div class="screenshot-grid feature-media-grid">
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <video autoplay loop muted playsinline>
-                    <source src="assets/img/the-songs-of-ayan/feature-3-clip1.mp4" type="video/mp4">
-                  </video>
+            <!--  <h5>GIFs</h5> -->
+              <div class="flow-zigzag">
+                <!-- Row 1: Card 1 → Card 2 → Card 3 -->
+                <div class="flow-row">
+                  <div class="flow-item">
+                    <div class="screenshot-item" onclick="openLightbox(this)">
+                      <video autoplay loop muted playsinline>
+                        <source src="assets/video/idea_01b.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="flow-label">Prototype 01 - AI escort</div>
+                  </div>
+                  <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                  <div class="flow-item">
+                    <div class="screenshot-item" onclick="openLightbox(this)">
+                      <video autoplay loop muted playsinline>
+                        <source src="assets/video/idea_04.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="flow-label">Prototype 02 - AI escort with spiritual exploration</div>
+                  </div>
+                  <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                  <div class="flow-item">
+                    <div class="screenshot-item" onclick="openLightbox(this)">
+                      <video autoplay loop muted playsinline>
+                        <source src="assets/video/idea_02.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="flow-label">Prototype 03 - Platforming</div>
+                  </div>
                 </div>
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <video autoplay loop muted playsinline>
-                    <source src="assets/img/the-songs-of-ayan/feature-3-clip2.mp4" type="video/mp4">
-                  </video>
+                <!-- Connector: down arrow from Card 3 to Card 4 row -->
+                <div class="flow-connector-row">
+                  <div class="flow-connector-spacer"></div>
+                  <div class="flow-connector-spacer"></div>
+                  <div class="flow-connector-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
+                </div>
+                <!-- Row 2: Card 6 ← Card 5 ← Card 4 -->
+                <div class="flow-row flow-row-reverse">
+                  <div class="flow-item">
+                    <div class="screenshot-item" onclick="openLightbox(this)">
+                      <video autoplay loop muted playsinline>
+                        <source src="assets/video/idea_03.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="flow-label">Prototype 04 - Environmental Puzzle</div>
+                  </div>
+                  <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></div>
+                  <div class="flow-item">
+                    <div class="screenshot-item" onclick="openLightbox(this)">
+                      <video autoplay loop muted playsinline>
+                        <source src="assets/video/rhythm_gif_01.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="flow-label">Prototype 05 - Survival-based Rhythm Game</div>
+                  </div>
+                  <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></div>
+                  <div class="flow-item">
+                    <div class="screenshot-item" onclick="openLightbox(this)">
+                      <video autoplay loop muted playsinline>
+                        <source src="assets/video/rhythm_gif_03.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="flow-label">Current Game - Narrative-based Rhythm Game</div>
+                  </div>
                 </div>
               </div>
             </div>
