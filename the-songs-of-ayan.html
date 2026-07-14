@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Fantasy Adventure Game - Game Project</title>
+  <title>The Songs Of Ayan - Game Project</title>
 
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
@@ -25,6 +25,51 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
+    /* ══════════════════════════════════════════════════════════
+       PROJECT PAGE TEMPLATE — consistent structure for all games
+       Sections: Back(top) → Title → Quick Facts → Video →
+       Actions (Download/GitHub) → Overview → Tools Used →
+       Game Features (repeatable) → Gallery → Back(bottom)
+       ══════════════════════════════════════════════════════════ */
+
+    /* ── Back button (top) ── */
+    .back-btn-top {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .back-btn {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Quick Facts strip ── */
+    .quick-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      justify-content: center;
+      margin: 1.25rem 0 2rem;
+    }
+
+    .quick-facts .fact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.8rem;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .quick-facts .fact-pill strong {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
     /* ── Video ── */
     .project-video iframe {
       width: 100%;
@@ -32,66 +77,106 @@
       border-radius: 10px;
     }
 
-    /* ── Description Grid ── */
-    .description-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+    /* ── Action buttons row (Download + GitHub) ── */
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
       margin-bottom: 3rem;
     }
 
-    @media (max-width: 991px) {
-      .description-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .project-actions .btn {
+      min-width: 220px;
     }
 
-    @media (max-width: 575px) {
-      .description-grid {
-        grid-template-columns: 1fr;
-      }
+    /* ── Section headings ── */
+    .project-section-block {
+      margin-bottom: 3rem;
     }
 
-    .desc-card {
-      height: 260px;
-      border: 1px solid rgba(255, 255, 255, 0.75);
+    .project-section-block > h3 {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Overview / Tools text card ── */
+    .info-card {
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 10px;
-      padding: 1.1rem 1rem 1rem 1.1rem;
-      overflow-y: auto;
-      overflow-x: hidden;
-      background: transparent;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.5) transparent;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
     }
 
-    .desc-card::-webkit-scrollbar {
-      width: 6px;
+    .info-card p {
+      color: #ffffff;
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+      text-align: justify;
     }
 
-    .desc-card::-webkit-scrollbar-track {
-      background: transparent;
+    .info-card p:last-child {
+      margin-bottom: 0;
     }
 
-    .desc-card::-webkit-scrollbar-thumb {
-      background-color: rgba(255,255,255,0.45);
-      border-radius: 10px;
+    /* ── Tools Used tags ── */
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
     }
 
-    .desc-card h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.55rem;
+    .tools-list .tool-tag {
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.85rem;
       color: #ffffff;
     }
 
-    .desc-card p {
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: #ffffff;
-      margin-bottom: 0.4rem;
+    /* ── Game Features (repeatable block) ── */
+    .feature-block {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      background: rgba(255, 255, 255, 0.02);
     }
 
-    /* ── Screenshot Grid ── */
+    .feature-block h4 {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .feature-block p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+      text-align: justify;
+    }
+
+    /* Sub-group label inside a feature card (GIFs / Screenshots) */
+    .feature-media-group {
+      margin-top: 1.5rem;
+    }
+
+    /* ── PICKY-TOUCH OVERRIDE ──
+       Makes the "GIFS" / "SCREENSHOTS" sub-labels match the feature
+       title (h4) font/style exactly. Delete this whole rule (and the
+       .feature-media-group h5 rule above it becomes unused) to revert
+       these labels back to a smaller, muted, uppercase look instead. */
+    .feature-media-group h5 {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Gallery / Screenshot Grid ── */
     .screenshot-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -108,6 +193,36 @@
     @media (max-width: 480px) {
       .screenshot-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Game Features media grid — same sizing as the Gallery grid above,
+       but centers items instead of stretching them across 3 fixed columns.
+       1 item = centered single item. 2 items = centered pair. 3+ items =
+       wraps and fills rows just like the Gallery grid. ── */
+    .feature-media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .feature-media-grid .screenshot-item {
+      flex: 0 0 calc((100% - 2.5rem) / 3);
+      max-width: calc((100% - 2.5rem) / 3);
+    }
+
+    @media (max-width: 767px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: calc((100% - 1.25rem) / 2);
+        max-width: calc((100% - 1.25rem) / 2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: 100%;
+        max-width: 100%;
       }
     }
 
@@ -188,17 +303,6 @@
     .lightbox-close:hover {
       background: rgba(0,0,0,0.9);
     }
-
-    /* ── Back button spacing ── */
-    .back-btn {
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    /* ── Download section ── */
-    .project-download {
-      margin-bottom: 2.5rem;
-    }
   </style>
 </head>
 
@@ -221,70 +325,204 @@
   <main class="main">
 
     <section id="project-details" class="portfolio section">
+      <div class="container" data-aos="fade-up">
 
-      <!-- Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>The Songs Of Ayan</h2>
-        <p>A narrative-based rhythm game.</p>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- Gameplay Video -->
-    <div class="ratio ratio-16x9 mb-4">
-      <iframe
-        src="https://www.youtube.com/embed/SDUEfqjvKUM"
-        title="The Songs Of Ayan Gameplay Video"
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-        <!-- Download Link -->
-        <div class="project-download">
-          <h3>Download Game</h3>
-          <p>You can download and play the game using the link below:</p>
-          <a href="https://topzone.itch.io/the-songs-of-ayan" target="_blank" class="btn btn-primary">
-            <i class="bi bi-download"></i> Download
+        <!-- ══════ BACK BUTTON (TOP) ══════ -->
+        <div class="back-btn-top" data-aos="fade-up">
+          <a href="game-projects.html" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Back to Game Projects
           </a>
         </div>
 
-        <!-- ── Description Grid ── -->
-        <div class="description-grid" data-aos="fade-up">
+        <!-- ══════ TITLE + SHORT DESCRIPTION ══════ -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>The Songs Of Ayan</h2>
+          <p>A narrative-based rhythm game.</p>
+        </div>
 
-          <!-- Project Overview -->
-          <div class="desc-card">
-            <h4>Project Overview</h4>
+        <!-- ══════ QUICK FACTS STRIP ══════ -->
+        <!-- Edit/add pills as needed per project: Engine, Platform, Role, Team, Duration, Status -->
+        <div class="quick-facts" data-aos="fade-up">
+          <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.7.4</span>
+          <span class="fact-pill"><strong>Platform:</strong> PC (Windows)</span>
+          <span class="fact-pill"><strong>Role:</strong> Solo Developer</span>
+          <span class="fact-pill"><strong>Focus:</strong> Rhythm &amp; Narrative Systems</span>
+        </div>
+
+        <!-- ══════ GAMEPLAY VIDEO ══════ -->
+        <div class="ratio ratio-16x9 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <iframe
+            src="https://www.youtube.com/embed/SDUEfqjvKUM"
+            title="The Songs Of Ayan Gameplay Video"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- ══════ ACTION BUTTONS: DOWNLOAD + GITHUB ══════ -->
+        <div class="project-actions" data-aos="fade-up" data-aos-delay="150">
+          <a href="https://topzone.itch.io/the-songs-of-ayan" target="_blank" class="btn btn-primary">
+            <i class="bi bi-download"></i> Download Game
+          </a>
+          <!-- GitHub button — same style as Download. On by default; replace the href with
+               the project's real repo link, or delete this whole <a> if the project has no public repo. -->
+          <a href="https://github.com/your-username/your-repo" target="_blank" class="btn btn-primary">
+            <i class="bi bi-github"></i> View on GitHub
+          </a>
+        </div>
+
+        <!-- ══════ PROJECT OVERVIEW ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <h3>Project Overview</h3>
+          <div class="info-card">
             <p>The Songs of Ayan is a short narrative rhythm game where every beat carries meaning and every rhythm challenge has a significance.</p>
-          </div>
-
-          <!-- Gameplay Concept -->
-          <div class="desc-card">
-            <h4>Gameplay Story Context</h4>
-            <p>, The Songs of Ayan, follows Sayo, a young man of the Ayan lineage, as he undertakes shrine-based rhythm challenges, collects drum artifacts, and seeks the blessings of Ayan Agalu, the Yoruba deity of drumming, in order to complete his initiation into the Ayan drumming guild.</p>
+            <p>The Songs of Ayan follows Sayo, a young man of the Ayan lineage, as he undertakes shrine-based rhythm challenges, collects drum artifacts, and seeks the blessings of Ayan Agalu, the Yoruba deity of drumming, in order to complete his initiation into the Ayan drumming guild.</p>
             <p>The game translates real-life drumming practices into interactive mechanics, embedding cultural meaning directly into gameplay while reinforcing narrative progression.</p>
+            <p>- <strong>Solo Developer:</strong> I was solely responsible for every aspect of the game's development, from designing the game, to creating all the assets (characters, environments, props, animations, sounds and UI), to the Unreal Engine 5 implementation (game programming).</p>
+          </div>
+        </div>
+
+        <!-- ══════ TOOLS USED ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <h3>Tech Stack</h3>
+          <div class="info-card">
+            <div class="tools-list">
+              <span class="tool-tag">Unreal Engine 5.7.4</span>
+              <span class="tool-tag">Blueprints</span>
+              <span class="tool-tag">Scripting</span>
+              <span class="tool-tag">Game Design</span>
+              <span class="tool-tag">Programming</span>
+              <span class="tool-tag">Logic</span>
+              <span class="tool-tag">Rhythm Mechanics</span>
+              <span class="tool-tag">Narrative Design</span>
+              <span class="tool-tag">Environmental Design</span>
+              <span class="tool-tag">Sound Design</span>
+              <span class="tool-tag">FL Studio</span>
+              <span class="tool-tag">Maya</span>
+              <span class="tool-tag">Clean Architecture</span>
+              <span class="tool-tag">Save System</span>
+              <span class="tool-tag">Level Design</span>
+              <!-- Add more tags here as needed, e.g.: -->
+              <!-- <span class="tool-tag">Blueprints</span> -->
+              <!-- <span class="tool-tag">Maya</span> -->
+              <!-- <span class="tool-tag">Substance Painter</span> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ GAME FEATURES (repeatable block) ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <h3>Game Features</h3>
+
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 1
+               Structure: Title → Description → GIFs (optional) → Screenshots (optional)
+               Duplicate this entire .feature-block to add Feature 02, 03, etc.
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4>Shrine-Based Rhythm Challenges</h4>
+
+            <!-- Description -->
+            <p>Sayo undertakes shrine-based rhythm challenges and collects drum artifacts as part of his initiation into the Ayan drumming guild, translating real-life drumming practices into interactive mechanics.</p>
+            <p>This embeds cultural meaning directly into gameplay while reinforcing the narrative progression of the story.</p>
+
+            <!-- GIFs (optional) — replace src with your real gif(s), add/remove .screenshot-item entries, or delete this whole block if none -->
+            <div class="feature-media-group">
+              <h5>GIFs</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder" alt="Shrine Rhythm Challenge Gif">
+                </div>
+              </div>
+            </div>
+
+            <!-- Screenshots (optional) — replace src with your real screenshot(s), add/remove .screenshot-item entries, or delete this whole block if none -->
+            <div class="feature-media-group">
+              <h5>Screenshots</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Shrine Rhythm Challenge Screenshot 1">
+                </div>
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+2" alt="Shrine Rhythm Challenge Screenshot 2">
+                </div>
+              </div>
+            </div>
           </div>
 
-        <!-- Credits -->
-          <div class="desc-card">
-            <h4>Credits</h4>
-            <p>- <strong>Solo Developer:</strong> I was solely responsible for every aspects of the game development, from designing the game, to creating all the assets (characters, environments, props, animations, sounds and UI), to the Unreal Engine 5 implementation (game programming) </p>
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 2 — placeholder, replace title/description/media
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4>Feature 02 Title (Placeholder Block)</h4>
+
+            <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+
+            <div class="feature-media-group">
+              <h5>GIFs</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder" alt="Feature 02 Gif">
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-media-group">
+              <h5>Screenshots</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Feature 02 Screenshot 1">
+                </div>
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+2" alt="Feature 02 Screenshot 2">
+                </div>
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+3" alt="Feature 02 Screenshot 3">
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Development Details -->
-          <div class="desc-card">
-            <h4>Development Details</h4>
-            <p>- <strong>Engine:</strong> Unreal Engine 5.7.4</p>
-            <p>- <strong>Development Focus:</strong> Rhythm and Narrative Gameplay Systems.</p>
-            <p>- <strong>Role:</strong> Solo Developer/Gameplay Programmer</p>
-            <p>- <strong>Platforms:</strong> PC (Windows).</p>
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 3 — placeholder, replace title/description/media
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4>Feature 03 Title (Placeholder)</h4>
+
+            <p>Replace this with a description of the feature — what problem it solved, how it works, and any tech/systems involved.</p>
+
+            <div class="feature-media-group">
+              <h5>GIFs</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder+1" alt="Feature 03 Gif 1">
+                </div>
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=GIF+Placeholder+2" alt="Feature 03 Gif 2">
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-media-group">
+              <h5>Screenshots</h5>
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+1" alt="Feature 03 Screenshot 1">
+                </div>
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <img src="https://placehold.co/600x338/1a1a1a/ffffff?text=Screenshot+2" alt="Feature 03 Screenshot 2">
+                </div>
+              </div>
+            </div>
           </div>
 
-        </div><!-- /description-grid -->
+          <!-- Add more feature cards below by duplicating any block above. -->
 
-        <!-- ── Screenshots Grid ── -->
-        <div class="project-section" data-aos="fade-up">
-          <h4>Screenshots</h4>
+        </div>
+
+        <!-- ══════ GALLERY ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <h3>Gallery</h3>
           <div class="screenshot-grid">
             <div class="screenshot-item" onclick="openLightbox(this)">
               <img src="assets/img/portfolio/the-songs-of-ayan/ss" alt="Title Screen">
@@ -296,41 +534,46 @@
               <img src="assets/img/the-songs-of-ayan/SS02.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS03.png" alt="Screenshot">
+              <img src="assets/img/the-songs-of-ayan/SS03.png" alt="Screenshot">
             </div>
             <div class="screenshot-item" onclick="openLightbox(this)">
               <img src="assets/img/the-songs-of-ayan/SS04.png" alt="Screenshot">
             </div>
-             <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS05.png" alt="Screenshot">
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS05.png" alt="Screenshot">
             </div>
-             <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS06.png" alt="Screenshot">
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS06.png" alt="Screenshot">
             </div>
-             <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS07.png" alt="Screenshot">
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS07.png" alt="Screenshot">
             </div>
-             <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS08.png" alt="Screenshot">
-              <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS09.png" alt="Screenshot">
-              <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS10.png" alt="Screenshot">
-              <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS11.png" alt="Screenshot">
-              <div class="screenshot-item" onclick="openLightbox(this)">
-             <img src="assets/img/the-songs-of-ayan/SS12.png" alt="Screenshot">
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS08.png" alt="Screenshot">
             </div>
-           </div>
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS09.png" alt="Screenshot">
+            </div>
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS10.png" alt="Screenshot">
+            </div>
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS11.png" alt="Screenshot">
+            </div>
+            <div class="screenshot-item" onclick="openLightbox(this)">
+              <img src="assets/img/the-songs-of-ayan/SS12.png" alt="Screenshot">
+            </div>
+          </div>
         </div>
 
-        <!-- Back Button -->
+        <!-- ══════ BACK BUTTON (BOTTOM) ══════ -->
         <div class="text-center back-btn" data-aos="fade-up">
-          <a href="game-projects.html" class="btn btn-primary">Back to Game Projects</a>
+          <a href="game-projects.html" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Back to Game Projects
+          </a>
         </div>
 
       </div>
-
     </section>
 
   </main>
