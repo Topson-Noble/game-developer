@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Cantoni - Game Project</title>
+  <title>Sortris - Game Project</title>
 
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
@@ -29,8 +29,7 @@
        PROJECT PAGE TEMPLATE — consistent structure for all games
        Sections: Back(top) → Title → Quick Facts → Video →
        Actions (Download/GitHub) → Overview → Tools Used →
-       Technical Details → Game Features (repeatable) → Gallery →
-       Back(bottom)
+       Game Features (repeatable) → Gallery → Back(bottom)
        ══════════════════════════════════════════════════════════ */
 
     /* ── Back button (top) ── */
@@ -104,7 +103,7 @@
     }
 
     /* ── Overview / Tools / Technical Details card ──
-       The section header lives INSIDE the card as a title bar.
+       The section header now lives INSIDE the card as a title bar.
        Only .info-card-body scrolls (not the whole card), so the
        header stays visible the whole time, even while the text
        below it is being scrolled. */
@@ -112,9 +111,9 @@
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.03);
-      overflow: hidden;
+      overflow: hidden; /* clips the title bar's corners to match the card's rounded corners */
 
-      max-width: 1400px;
+      max-width: 1400px;      /* Control the card's width here*/
       margin: 0 auto;
     }
 
@@ -131,7 +130,7 @@
       padding: 1.25rem 1.5rem;
 
       max-height: 160px;       /* ← ADJUST THIS to control the scrollable body's height */
-      overflow-y: auto;
+      overflow-y: auto;        /* shows a scrollbar only when content overflows */
       overflow-x: hidden;
     }
 
@@ -146,7 +145,10 @@
       margin-bottom: 0;
     }
 
-    /* ── Tools Used tags ── */
+    /* ── Tools Used tags ──
+       justify-content: center keeps tags centered as a group.
+       flex-wrap already sends overflow tags to a new line automatically
+       once the row runs out of horizontal space in .info-card. */
     .tools-list {
       display: flex;
       flex-wrap: wrap;
@@ -178,18 +180,21 @@
       font-size: 1.15rem;
       margin: 0 0 1rem;
       padding-bottom: 0.85rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* faded line below the title */
     }
 
+    /* ── Feature description — scrollable, justified, same behavior
+       as the Project Overview card. Only this block scrolls; the
+       title above and the media below it stay fully visible. ── */
     .feature-description {
-      max-height: 160px;
+      max-height: 160px;       /* ← ADJUST THIS to control the scrollable area's height */
       overflow-y: auto;
       overflow-x: hidden;
-      padding-right: 0.75rem;
-      padding-left: 0.1rem;
+      padding-right: 0.75rem;  /* ← keeps text clear of the scrollbar */
+      padding-left: 0.1rem;    /* small matching space on the left for visual balance */
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* demarcation line before the media below */
     }
 
     .feature-description p {
@@ -203,10 +208,16 @@
       margin-bottom: 0;
     }
 
+    /* Sub-group label inside a feature card (GIFs / Screenshots) */
     .feature-media-group {
       margin-top: 1.5rem;
     }
 
+    /* ── PICKY-TOUCH OVERRIDE ──
+       Makes the "GIFS" / "SCREENSHOTS" sub-labels match the feature
+       title (h4) font/style exactly. Delete this whole rule (and the
+       .feature-media-group h5 rule above it becomes unused) to revert
+       these labels back to a smaller, muted, uppercase look instead. */
     .feature-media-group h5 {
       font-weight: 700;
       color: #ffffff;
@@ -234,9 +245,10 @@
       }
     }
 
-    /* ── Game Features / Gallery media grid — centers items regardless
-       of count (1 = centered alone, 2 = centered pair, 3 = fills row,
-       4+ = wraps to a new centered row). ── */
+    /* ── Game Features media grid — same sizing as the Gallery grid above,
+       but centers items instead of stretching them across 3 fixed columns.
+       1 item = centered single item. 2 items = centered pair. 3+ items =
+       wraps and fills rows just like the Gallery grid. ── */
     .feature-media-grid {
       display: flex;
       flex-wrap: wrap;
@@ -342,6 +354,132 @@
     .lightbox-close:hover {
       background: rgba(0,0,0,0.9);
     }
+
+    /* ── Zigzag Flow layout for Concept Evolution feature ── */
+    .flow-zigzag {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0;
+      padding: 0 2rem;
+    }
+
+    .flow-row {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .flow-row-reverse {
+      flex-direction: row-reverse;
+    }
+
+    .flow-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0 0 calc((100% - 6rem) / 3);
+      max-width: calc((100% - 6rem) / 3);
+      min-width: 0;
+    }
+
+    .flow-item .screenshot-item {
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .flow-label {
+      width: 100%;
+      background: #000000;
+      color: #ffffff;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.5rem 0.4rem;
+      border: 1.5px solid #c8c8d0;
+      border-top: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      margin-top: -1px;
+      line-height: 1.4;
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+      padding-top: 2.8rem;
+      width: 2rem;
+    }
+
+    .flow-arrow svg {
+      width: 2rem;
+      height: 2rem;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+    }
+
+    /* Connector row between the two flow rows */
+    .flow-connector-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 0.25rem 0;
+    }
+
+    .flow-connector-spacer {
+      flex: 0 0 calc((100% - 6rem) / 3);
+      max-width: calc((100% - 6rem) / 3);
+    }
+
+    .flow-connector-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+      width: 2rem;
+    }
+
+    .flow-connector-arrow svg {
+      width: 2rem;
+      height: 2rem;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+    }
+
+    @media (max-width: 767px) {
+      .flow-zigzag {
+        padding: 0 0.5rem;
+      }
+      .flow-row {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .flow-item {
+        flex: 0 0 calc((100% - 1.5rem) / 2);
+        max-width: calc((100% - 1.5rem) / 2);
+      }
+      .flow-arrow {
+        display: none;
+      }
+      .flow-connector-row {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .flow-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -375,43 +513,34 @@
 
         <!-- ══════ TITLE + SHORT DESCRIPTION ══════ -->
         <div class="container section-title" data-aos="fade-up">
-          <h2>Cantoni</h2>
-          <p>A simple, point-and-click, high-scoring game inspired by street bubble-blowing performances.</p>
+          <h2>Sortris</h2>
+          <p>A casual, grid-style, physics-based interior design game.</p>
         </div>
 
         <!-- ══════ QUICK FACTS STRIP ══════ -->
         <div class="quick-facts" data-aos="fade-up">
-          <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.5</span>
+          <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.5.4</span>
           <span class="fact-pill"><strong>Platform:</strong> PC (Windows)</span>
-          <span class="fact-pill"><strong>Role:</strong> Solo Developer</span>
-          <span class="fact-pill"><strong>Focus:</strong> Scoring &amp; Leaderboard Systems</span>
+          <span class="fact-pill"><strong>Role:</strong> Programmer, 3D Artist</span>
+          <span class="fact-pill"><strong>Team:</strong> 5 Members</span>
+          <span class="fact-pill"><strong>Duration:</strong> Game Jam (2025 Games Now! #17)</span>
+          <span class="fact-pill"><strong>Theme:</strong> CUTE</span>
         </div>
 
-        <!-- Gameplay Video -->
-        <div class="ratio ratio-16x9 mb-4">
+        <!-- ══════ GAMEPLAY VIDEO ══════ -->
+        <div class="ratio ratio-16x9 mb-4" data-aos="fade-up" data-aos-delay="100">
           <iframe
-            src="https://player.vimeo.com/video/1128828093"
-            title="Cantoni Gameplay"
+            src="https://www.youtube.com/embed/_otJA5hi3PM?start=2"
+            title="Sortris Gameplay Demo"
             frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen>
           </iframe>
         </div>
 
         <!-- ══════ ACTION BUTTONS: DOWNLOAD + GITHUB ══════ -->
         <div class="project-actions" data-aos="fade-up" data-aos-delay="150">
-          <a href="https://topzone.itch.io/cantoni" target="_blank" class="btn btn-primary">
+          <a href="https://sukinichi.itch.io/sortris" target="_blank" class="btn btn-primary">
             <i class="bi bi-download"></i> Download Game
-          </a>
-          <!-- GitHub button — same style as Download. On by default; replace the href with
-               the project's real repo link, or delete this whole <a> if the project has no public repo. -->
-          <a href="https://github.com/Topson-Noble" target="_blank" class="btn btn-primary">
-            <i class="bi bi-github"></i> View on GitHub
-          </a>
-          <!-- Breakdowm button — same style as Download. On by default; replace the href with
-               the project's real repo link, or delete this whole <a> if the project has no public repo. -->
-          <a href="https://nebula-enquiry-7df.notion.site/Cantoni-Game-Breakdown-3985d7dab77f8082a398fc8303db8934" target="_blank" class="btn btn-primary">
-            <i class="bi bi-github"></i> Technical Breakdown
           </a>
         </div>
 
@@ -421,13 +550,14 @@
             <h3 class="info-card-title">Project Overview</h3>
             <div class="info-card-body">
 
-              <p>A simple, fun-to-play, point-and-click, high-scoring game where players simply pop bubbles. The more bubbles you pop, the more chance you stand to be part of the 'Top Poppers.' </p>
+              <p>SORTRIS is a game where you take the role of an interior designer but with a twist - the furniture falls into place! Help out five clients in designing their dream rooms and organize their stuff however you want. Get creative and try your best to give these clients the room they deserve in this cute but hectic experience!</p>
 
-              <p>I got the inspiration for this game by observing street bubble-blowing performances whereby a guy blows out a lot of bubbles and people pop them for fun. I saw a lot of this during my visit around some European cities, and I decided to make a simple, fun game around that.</p>
+              <p>Sortris was created by a team of five for the Games Now!'s #17 Game Jam 2025. The theme for this game jam is CUTE. This game is a collaboration of game developers between different nationalities: Pakistan, Indonesia, Nigeria, and the Philippines.</p>
 
-              <p>This project allowed me to explore some more aspects of game programming in-depth, especially on how to set up a flexible 'leaderboard/high scoring system' that ranks and sorts players' scores in a descending fashion. </p>
+              <p>The core gameplay revolves around a Tetris-inspired grid system where furniture pieces drop from above and the player must arrange them within a room to satisfy each client's needs. The physics-based interactions add an extra layer of chaos and charm to the interior design process.</p>
 
-              <p>I had tons of fun creating this project, and this is the very first prototype version I'm making. Hopefully, if I have the time, I can make some updates to the game and add more functionalities, such as the ability to select different difficulty levels and some customizable settings that will allow players to shape their experiences with the game.</p>
+              <p>For full disclosure, this game does not contain any content derived or produced by generative AI tools. It does not feature mature content and/or themes, and all copyrighted material is credited in the documentation.</p>
+
             </div>
           </div>
         </div>
@@ -438,12 +568,9 @@
             <h3 class="info-card-title">Tools</h3>
             <div class="info-card-body">
               <div class="quick-facts">
-                <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.5.4 </span>
-                <span class="fact-pill"><strong>Assets:</strong>Blender</span>
-                <span class="fact-pill"><strong>Sound Design:</strong> FL Studio, Adobe Audition </span>
-                <span class="fact-pill"><strong>Game Design:</strong>Miro Board, Canva</span>
-                <span class="fact-pill"><strong>Project Management:</strong>Excel</span>
-                <span class="fact-pill"><strong>Inspiration:</strong> Street Bubble Blowing Performance </span>
+                <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.5.4</span>
+                <span class="fact-pill"><strong>Development Focus:</strong> Grid-style movement, physics-collision enabled, in-game snapshot mechanics</span>
+                <span class="fact-pill"><strong>Platforms:</strong> PC (Windows), with potential scalability for web or mobile builds</span>
               </div>
             </div>
           </div>
@@ -452,138 +579,96 @@
         <!-- ══════ TECHNICAL DETAILS ══════ -->
         <div class="project-section-block" data-aos="fade-up">
           <div class="info-card">
-            <h3 class="info-card-title">Technical Details</h3>
+            <h3 class="info-card-title">Technical <span style="color:#136ac1;">Details</span></h3>
             <div class="info-card-body">
               <div class="tools-list">
-                <span class="tool-tag">Point-and-Click Mechanics</span>
-                <span class="tool-tag">Bubbles Popping</span>
-                <span class="tool-tag">Bubbles Spawner</span>
-                <span class="tool-tag">Bubbles Wobbly Motion</span>
-                <span class="tool-tag">Cyclic Motion</span>
-                <span class="tool-tag">Score System</span>
-                <span class="tool-tag">Save/Load System</span>
-                <span class="tool-tag">Leaderboard System</span>
-                <span class="tool-tag">Bubble Sorting Function</span>
-                <span class="tool-tag">Ranking Algorithm</span>
-                <span class="tool-tag">UE5 Gameplay Systems</span>
+                <span class="tool-tag">Game Programming</span>
+                <span class="tool-tag">Blueprints</span>
+                <span class="tool-tag">Grid-Style Movement</span>
+                <span class="tool-tag">Physics-Collision Systems</span>
+                <span class="tool-tag">In-Game Snapshot Mechanics</span>
+                <span class="tool-tag">3D Art</span>
+                <span class="tool-tag">Game Design</span>
+                <span class="tool-tag">UI/UX Design</span>
+                <span class="tool-tag">Rapid Prototyping</span>
+                <span class="tool-tag">Game Jam Development</span>
               </div>
             </div>
           </div>
         </div>
 
-    
-        <!-- ══════ GAME FEATURES (repeatable block) ══════
-             Extracted from the itch.io page. GIFs/MP4 and Screenshots
-             are left as placeholders per your request — swap in your
-             real clips/images whenever you're ready. -->
+        <!-- ══════ GAME FEATURES (repeatable block) ══════ -->
         <div class="project-section-block" data-aos="fade-up">
 
           <!-- ─────────────────────────────────────────────────────────
-               HIGHLIGHTS
+               FEATURE CARD 1 — Grid-Style Movement
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4>Design & Aesthetics</h4>
+            <h4><span style="color:#136ac1;">Grid-Style Movement: </span>Tetris-Inspired Room Arrangement</h4>
 
             <div class="feature-description">
-            <p><strong>Visual Style:</strong> Simple and minimal color, focusing on clarity of motion for quick reaction gameplay.</p>
-            <p><strong>Character Design:</strong> Three expressive, looping characters represent joy and friendship at the game's heart.</p>
-            <p><strong>Antagonist:</strong> A spiky creature that moves cyclically along the screen's edges, dynamically spawning bubbles toward the center.</p>
-            <p><strong>Audio:</strong> Original background track "Cantoni" composed to synchronize with gameplay pacing, giving the experience rhythm and personality.</p>
-            <p><strong>UI:</strong> Clean interface for player input, score tracking, and leaderboard display.</p>               
+              <p>The core mechanic of Sortris is a grid-style movement system inspired by classic Tetris gameplay. Furniture pieces fall from above into a designated room space, and the player must strategically position and rotate each piece to create a functional and aesthetically pleasing layout.</p>
+              <p>Each piece interacts with the grid and other objects through physics-based collisions, meaning placement is not just about alignment but also about managing how items stack, tumble, and settle. This creates a dynamic and sometimes chaotic design process where careful planning meets emergent physical behavior.</p>
+              <p>The grid system ensures that players have clear spatial constraints to work within, while the physics engine adds unpredictability and charm. A piece that looks perfectly placed might wobble and shift when another item lands nearby, forcing the player to adapt their strategy on the fly.</p>
+              <p>This combination of structured grid movement and organic physics results in a gameplay loop that is easy to understand but offers depth through the interplay of planning and reactive problem-solving.</p>
             </div>
-          </div>
 
-          <!-- ─────────────────────────────────────────────────────────
-               FEATURE CARD 1
-               ───────────────────────────────────────────────────────── -->
-          <div class="feature-block">
-            <h4><span style="color:#136ac1;">Leaderboard System: </span>Bubble Sort Ranking &amp; Top Poppers</h4>
-
-            <div class="feature-description">
-<p>The core technical feature of Cantoni is a persistent leaderboard that ranks players as the "Top Poppers." Every completed run stores the player's name and score, then sorts the results in descending order using a Bubble Sort implementation.</p>
-<p>The challenge was keeping the rankings accurate whenever new scores were added while ensuring previous results were preserved.</p>
-<p>This was solved by combining an efficient save/load workflow with Bubble Sort, allowing the leaderboard to update automatically after every play session.</p></div>
-
-             <!-- Screenshots (placeholder — replace with real screenshots) -->
             <div class="feature-media-group">
-              <!--<h5>Screenshots</h5>-->
               <div class="screenshot-grid feature-media-grid">
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="assets/img/cantoni/Cantoni_leaderboard.png" alt="Combat System Screenshot 1">
-                </div>
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="assets/img/cantoni/bubble_sort_function.png" alt="Combat System Screenshot 1">
-                </div>
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <img src="assets/img/cantoni/save logic.png" alt="Combat System Screenshot 1">
-                </div>
+                <!-- GIFs/MP4 placeholders — to be added later -->
               </div>
             </div>
           </div>
 
           <!-- ─────────────────────────────────────────────────────────
-               FEATURE CARD 2
+               FEATURE CARD 2 — Photo-Mode / Snapshot System
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4><span style="color:#136ac1;">Bubble Gameplay: </span>Point-and-Click, Wobble &amp; Spawning</h4>
+            <h4><span style="color:#136ac1;">Photo Mode: </span>Capture Your Design at the End of Each Round</h4>
 
             <div class="feature-description">
-<p>The gameplay revolves around popping bubbles before they reach three cheerful friends at the centre of the screen. A creature continuously orbits around them, spawning bubbles toward the centre while each bubble follows a subtle wobbly motion.</p>
-<p>The challenge was making the bubbles feel lively without becoming frustrating to click.</p>
-<p>Carefully tuned spawning behaviour, point-and-click interaction, and animated motion produced responsive gameplay that remains simple, readable, and enjoyable.</p></div>
+              <p>At the end of each design round, players can activate the in-game photo mode to capture a screenshot of their final room arrangement. This snapshot serves as a memento of the player's creative work and can be saved or shared.</p>
+              <p>The photo mode was designed to give players a sense of accomplishment and a way to document their unique interior designs. Each client's room will look different depending on the player's choices, making every screenshot a one-of-a-kind creation.</p>
+              <p>The snapshot system captures the full room state, including all placed furniture, their positions, rotations, and any physics-driven settling that occurred during the round. This ensures that the final image accurately represents the player's completed design.</p>
+              <p>Future iterations could expand this system to include filters, camera angles, and social sharing options, turning each completed room into a shareable piece of player-generated content.</p>
+            </div>
 
             <div class="feature-media-group">
-                          <!--<h5>GIFs</h5>-->
               <div class="screenshot-grid feature-media-grid">
-                <div class="screenshot-item" onclick="openLightbox(this)">
-                  <video autoplay loop muted playsinline>
-                    <source src="assets/video/cantoni-bubbles.mp4" type="video/mp4">
-                  </video>
-                </div>
+                <!-- GIFs/MP4 placeholders — to be added later -->
+              </div>
             </div>
-          </div>
           </div>
 
           <!-- ─────────────────────────────────────────────────────────
-               FEATURE CARD 3
+               FEATURE CARD 3 — Target Photo Comparison (Planned Future Feature)
                ───────────────────────────────────────────────────────── -->
           <div class="feature-block">
-            <h4><span style="color:#136ac1;">Persistent Data: </span>Save, Load &amp; Replayability</h4>
+            <h4><span style="color:#136ac1;">Target Comparison System: </span>Match the Reference, Score Your Design (Planned)</h4>
 
             <div class="feature-description">
-                <p>To encourage replayability, the game remembers player names and scores between sessions. Returning players can immediately compete against previous runs and improve their ranking.</p>
-                <p>The main challenge was designing a lightweight persistence system that integrates seamlessly with gameplay.</p>
-                <p>An efficient save/load system was implemented as the foundation for the leaderboard, allowing player data to be stored, retrieved, and ranked reliably.</p></div>
-          </div>
-          <!-- Add more feature cards below by duplicating any block above. -->
+              <p>A planned future feature for Sortris introduces a target-based scoring system that adds a competitive and evaluative layer to the interior design gameplay. At the start of each round, the player will be shown a reference photograph displaying the ideal or target arrangement of furniture for that client's room.</p>
+              <p>This reference image will remain visible in the UI throughout the gameplay session, serving as a visual guide that the player can consult while placing and arranging items. The goal is to recreate the target layout as closely as possible within the constraints of the falling-piece mechanic and physics interactions.</p>
+              <p>When the round concludes, the player will use the existing photo mode to capture a screenshot of their final arrangement. The system will then perform an automated comparison between the player's screenshot and the original target image, analyzing spatial alignment, furniture placement, and overall room composition.</p>
+              <p>Based on this comparison, the game will generate a similarity score that rewards the player for how closely their design matches the reference. Higher accuracy yields better scores, encouraging replayability as players strive to perfect their arrangements. This system transforms the freeform creative experience into a skill-based challenge where precision and spatial reasoning are key.</p>
+              <p>This feature is currently in the conceptual stage and represents a natural evolution of the existing snapshot mechanics, bridging creative expression with objective evaluation.</p>
+            </div>
 
-        </div> 
-
-          <!-- ─────────────────────────────────────────────────────────
-               HIGHLIGHTS
-               ───────────────────────────────────────────────────────── -->
-          <div class="feature-block">
-            <h4>Highlights</h4>
-
-            <div class="feature-description">
-                <p>>>> Implemented a custom leaderboard system with persistent score saving and real-time ranking.</p>
-                <p>>>> Created a data-driven player naming and scoring system with memory retention between sessions.</p>
-                <p>>>> Designed cyclic enemy AI that orbits the scene and spawns projectiles dynamically.</p>
-                <p>>>> Built timed gameplay flow synchronized with the original Cantoni soundtrack.</p>
-                <p>>>> Composed and produced the game's theme music, integrating it directly into gameplay rhythm and feedback.</p>
-                <p>>>> Focused on polished UX, ensuring the leaderboard, animations, and end-state transitions feel smooth and responsive.</p>                
+            <div class="feature-media-group">
+              <div class="screenshot-grid feature-media-grid">
+                <!-- GIFs/MP4 placeholders — to be added later -->
+              </div>
             </div>
           </div>
+
+        </div>
 
         <!-- ══════ GALLERY ══════ -->
         <div class="project-section-block" data-aos="fade-up">
           <h3>Gallery</h3>
           <div class="screenshot-grid feature-media-grid">
             <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/Cantoni_gameplay.png" alt="Title Screen">
-            </div>
-            <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/Cantoni_leaderboard.png" alt="Screenshot">
+              <img src="assets/img/sortris/Sortris.png" alt="Sortris Screenshot 1">
             </div>
           </div>
         </div>
