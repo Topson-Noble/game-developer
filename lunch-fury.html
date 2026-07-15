@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Fantasy Adventure Game - Game Project</title>
+  <title>Lunch Fury - Game Project</title>
 
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
@@ -25,6 +25,52 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
+    /* ══════════════════════════════════════════════════════════
+       PROJECT PAGE TEMPLATE — consistent structure for all games
+       Sections: Back(top) → Title → Quick Facts → Video →
+       Actions (Download/GitHub) → Overview → Tools Used →
+       Technical Details → Game Features (repeatable) → Gallery →
+       Back(bottom)
+       ══════════════════════════════════════════════════════════ */
+
+    /* ── Back button (top) ── */
+    .back-btn-top {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .back-btn {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Quick Facts strip ── */
+    .quick-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      justify-content: center;
+      margin: 1.25rem 0 2rem;
+    }
+
+    .quick-facts .fact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.8rem;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .quick-facts .fact-pill strong {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
     /* ── Video ── */
     .project-video iframe {
       width: 100%;
@@ -32,66 +78,143 @@
       border-radius: 10px;
     }
 
-    /* ── Description Grid ── */
-    .description-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+    /* ── Action buttons row (Download + GitHub) ── */
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
       margin-bottom: 3rem;
     }
 
-    @media (max-width: 991px) {
-      .description-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .project-actions .btn {
+      min-width: 220px;
     }
 
-    @media (max-width: 575px) {
-      .description-grid {
-        grid-template-columns: 1fr;
-      }
+    /* ── Section headings ── */
+    .project-section-block {
+      margin-bottom: 3rem;
     }
 
-    .desc-card {
-      height: 260px;
-      border: 1px solid rgba(255, 255, 255, 0.75);
+    .project-section-block > h3 {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    /* ── Overview / Tools / Technical Details card ──
+       The section header lives INSIDE the card as a title bar.
+       Only .info-card-body scrolls (not the whole card), so the
+       header stays visible the whole time, even while the text
+       below it is being scrolled. */
+    .info-card {
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 10px;
-      padding: 1.1rem 1rem 1rem 1.1rem;
+      background: rgba(255, 255, 255, 0.03);
+      overflow: hidden;
+
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .info-card-title {
+      margin: 0;
+      padding: 1rem 1.5rem 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .info-card-body {
+      padding: 1.25rem 1.5rem;
+
+      max-height: 160px;       /* ← ADJUST THIS to control the scrollable body's height */
       overflow-y: auto;
       overflow-x: hidden;
-      background: transparent;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.5) transparent;
     }
 
-    .desc-card::-webkit-scrollbar {
-      width: 6px;
+    .info-card p {
+      color: #ffffff;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      text-align: justify;
     }
 
-    .desc-card::-webkit-scrollbar-track {
-      background: transparent;
+    .info-card p:last-child {
+      margin-bottom: 0;
     }
 
-    .desc-card::-webkit-scrollbar-thumb {
-      background-color: rgba(255,255,255,0.45);
-      border-radius: 10px;
+    /* ── Tools Used tags ── */
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
     }
 
-    .desc-card h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.55rem;
+    .tools-list .tool-tag {
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.85rem;
       color: #ffffff;
     }
 
-    .desc-card p {
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: #ffffff;
-      margin-bottom: 0.4rem;
+    /* ── Game Features (repeatable block) ── */
+    .feature-block {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      background: rgba(255, 255, 255, 0.02);
     }
 
-    /* ── Screenshot Grid ── */
+    .feature-block h4 {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.15rem;
+      margin: 0 0 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .feature-description {
+      max-height: 160px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 0.75rem;
+      padding-left: 0.1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .feature-description p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .feature-description p:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-media-group {
+      margin-top: 1.5rem;
+    }
+
+    .feature-media-group h5 {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Gallery / Screenshot Grid ── */
     .screenshot-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -111,6 +234,35 @@
       }
     }
 
+    /* ── Game Features / Gallery media grid — centers items regardless
+       of count (1 = centered alone, 2 = centered pair, 3 = fills row,
+       4+ = wraps to a new centered row). ── */
+    .feature-media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .feature-media-grid .screenshot-item {
+      flex: 0 0 calc((100% - 2.5rem) / 3);
+      max-width: calc((100% - 2.5rem) / 3);
+    }
+
+    @media (max-width: 767px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: calc((100% - 1.25rem) / 2);
+        max-width: calc((100% - 1.25rem) / 2);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-media-grid .screenshot-item {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+
     .screenshot-item {
       aspect-ratio: 16 / 9;
       overflow: hidden;
@@ -119,7 +271,8 @@
       cursor: pointer;
     }
 
-    .screenshot-item img {
+    .screenshot-item img,
+    .screenshot-item video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -127,7 +280,8 @@
       transition: transform 0.3s ease;
     }
 
-    .screenshot-item:hover img {
+    .screenshot-item:hover img,
+    .screenshot-item:hover video {
       transform: scale(1.06);
     }
 
@@ -188,17 +342,6 @@
     .lightbox-close:hover {
       background: rgba(0,0,0,0.9);
     }
-
-    /* ── Back button spacing ── */
-    .back-btn {
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    /* ── Download section ── */
-    .project-download {
-      margin-bottom: 2.5rem;
-    }
   </style>
 </head>
 
@@ -221,64 +364,227 @@
   <main class="main">
 
     <section id="project-details" class="portfolio section">
+      <div class="container" data-aos="fade-up">
 
-      <!-- Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Lunch Fury</h2>
-        <p>A short stylized 3D side-scrolling beat-em-up game.</p>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- Gameplay Video -->
-    <div class="ratio ratio-16x9 mb-4">
-      <iframe
-        src="https://www.youtube.com/embed/DBYen7M5yeQ"
-        title="Lunch Fury Gameplay Video"
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-        <!-- Download Link -->
-        <div class="project-download">
-          <h3>Download Game</h3>
-          <p>You can download and play the game using the link below:</p>
-          <a href="https://topzone.itch.io/lunch-fury" target="_blank" class="btn btn-primary">
-            <i class="bi bi-download"></i> Download
+        <!-- ══════ BACK BUTTON (TOP) ══════ -->
+        <div class="back-btn-top" data-aos="fade-up">
+          <a href="game-projects.html" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Back to Game Projects
           </a>
         </div>
 
-        <!-- ── Description Grid ── -->
-        <div class="description-grid" data-aos="fade-up">
+        <!-- ══════ TITLE + SHORT DESCRIPTION ══════ -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Lunch Fury</h2>
+          <p>A short stylized 3D side-scrolling beat-em-up game.</p>
+        </div>
 
-          <!-- Project Overview -->
-          <div class="desc-card">
-            <h4>Project Overview</h4>
-            <p>A short stylized 3D side-scrolling beat-em-up inspired by classic arcade brawlers like Streets of Rage and Bare Knuckles.</p>
+        <!-- ══════ QUICK FACTS STRIP ══════ -->
+        <div class="quick-facts" data-aos="fade-up">
+          <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.7.4</span>
+          <span class="fact-pill"><strong>Platform:</strong> PC (Windows)</span>
+          <span class="fact-pill"><strong>Role:</strong> Solo Developer</span>
+          <span class="fact-pill"><strong>Focus:</strong> Combat &amp; Game Feel</span>
+        </div>
+
+        <!-- ══════ GAMEPLAY VIDEO ══════ -->
+        <div class="ratio ratio-16x9 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <iframe
+            src="https://www.youtube.com/embed/DBYen7M5yeQ"
+            title="Lunch Fury Gameplay Video"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- ══════ ACTION BUTTONS: DOWNLOAD + GITHUB ══════ -->
+        <div class="project-actions" data-aos="fade-up" data-aos-delay="150">
+          <a href="https://topzone.itch.io/lunch-fury" target="_blank" class="btn btn-primary">
+            <i class="bi bi-download"></i> Download Game
+          </a>
+          <!-- GitHub button — same style as Download. On by default; replace the href with
+               the project's real repo link, or delete this whole <a> if the project has no public repo. -->
+          <a href="https://github.com/your-username/your-repo" target="_blank" class="btn btn-primary">
+            <i class="bi bi-github"></i> View on GitHub
+          </a>
+        </div>
+
+        <!-- ══════ PROJECT OVERVIEW ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <div class="info-card">
+            <h3 class="info-card-title">Project Overview</h3>
+            <div class="info-card-body">
+
+              <p>A short stylized 3D side-scrolling beat-em-up inspired by classic arcade brawlers like Streets of Rage and Bare Knuckle.</p>
+
+              <p>After finishing her training for the day, Sunny orders a special lunch she has been looking forward to all day,d but a group of ninjas ambushes the delivery guy and steals it. Big mistake. Now fueled by pure hunger and rage, Sunny punches and kicks her way through waves of ninja enemies to reclaim what rightfully belongs to her: her lunch.</p>
+
+              <p>Lunch Fury is a small self-jam / vertical slice project developed in Unreal Engine 5 to explore responsive hand-to-hand combat mechanics, enemy encounters, hit reactions, combat timing, and arcade-style gameplay flow. No generative AI was used in the development of this game.</p>
+
+              <p>The goal was to create something simple, fast, satisfying, and replayable while keeping the tone intentionally lighthearted and relatable — because honestly, everyone understands the pain of having the food you were waiting for suddenly taken away.</p>
+
+              <p>The current version is intentionally short and contained within a single level. Future updates may expand it further with boss fights, additional levels, more enemy variations, and extended story elements.</p>
+
+              <p>Controls: Move (WASD), Jump (Space), Punch (Left Mouse Button), Kick (Right Mouse Button), Sprint (Left Shift + WASD).</p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ TOOLS USED ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <div class="info-card">
+            <h3 class="info-card-title">Tools</h3>
+            <div class="info-card-body">
+              <div class="quick-facts">
+                <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.7.4 </span>
+                <span class="fact-pill"><strong>Animations:</strong>Maya</span>
+                <span class="fact-pill"><strong>3D Assets:</strong>Gumroad, Mixamo, Sketchfab</span>
+                <span class="fact-pill"><strong>Sounds and Music:</strong> Free Online Sounds </span>
+                <span class="fact-pill"><strong>Game Design:</strong>Miro Board</span>
+                <span class="fact-pill"><strong>Project Management:</strong>Jira, Excel</span>
+                <span class="fact-pill"><strong>Research & Development:</strong> Street of Rage, Bare Knuckles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ TECHNICAL DETAILS ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <div class="info-card">
+            <h3 class="info-card-title">Technical Details</h3>
+            <div class="info-card-body">
+              <div class="tools-list">
+                <span class="tool-tag">Combat System Design</span>
+                <span class="tool-tag">Hit Reaction Systems</span>
+                <span class="tool-tag">Enemy AI Behavior</span>
+                <span class="tool-tag">Combat Timing &amp; Game Feel</span>
+                <span class="tool-tag">Difficulty Mode Systems</span>
+                <span class="tool-tag">Double-Jump Mechanics</span>
+                <span class="tool-tag">Arcade Progression Design</span>
+                <span class="tool-tag">Player Feedback Systems</span>
+                <span class="tool-tag">Blueprints</span>
+                <span class="tool-tag">UE5 Gameplay Systems</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════ GAME FEATURES (repeatable block) ══════
+             Extracted from the itch.io page. GIFs/MP4 and Screenshots
+             are left as placeholders per your request — swap in your
+             real clips/images whenever you're ready. -->
+        <div class="project-section-block" data-aos="fade-up">
+
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 1
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4><span style="color:#136ac1;">Combat System: </span>Punches, Kicks &amp; Hit Reactions</h4>
+
+            <div class="feature-description">
+              <p>Lunch Fury's combat centers on responsive fist-and-kick attacks, bound to left and right mouse click, designed to feel immediate rather than complex. The project was built specifically as a self-jam vertical slice to explore hand-to-hand combat mechanics, hit reactions, and combat timing in Unreal Engine 5.</p>
+              <p>A large focus was placed on tuning enemy hit reactions and player feedback so that every strike lands with clear, readable impact, reinforcing the arcade-style feel the game was aiming for.</p>
+              <p>No AI tools were used in the development of this game - all combat animations, hit reactions, and gameplay logic were built and tuned by hand.</p>
+            </div>
+
+            <!-- GIFs (optional) — replace src with your real gif(s) or mp4 clip(s), add/remove .screenshot-item entries, or delete this whole block if none.
+                 MP4s are far more optimized than GIFs for the same "looping clip" effect — use a <video> tag like below instead of <img> for mp4s. -->
+            <div class="feature-media-group">
+              <!--<h5>GIFs</h5>-->
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/lf_jumpkick.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/lf_jumppunch.mp4" type="video/mp4">
+                  </video>
+                </div>                
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/lf_kickcombo.mp4" type="video/mp4">
+                  </video>
+                </div>       
+              </div>
+            </div> 
           </div>
 
-          <!-- Gameplay Concept -->
-          <div class="desc-card">
-            <h4>Gameplay Concept</h4>
-            <p>Lunch Fury is a small self-jam / vertical slice project developed in Unreal Engine 5 to explore responsive hand-to-hand combat mechanics, enemy encounters, hit reactions, combat timing, and arcade-style gameplay flow. No AI was used in the development of this game.</p>
-            <p>The goal was to create something simple, fast, satisfying, and replayable while keeping the tone intentionally lighthearted and relatable.</p>
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 2
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4><span style="color:#136ac1;">Enemy Waves: </span>Difficulty Modes &amp; Arcade Progression</h4>
+
+            <div class="feature-description">
+              <p>Players fight through multiple waves of ninja enemies across a single side-scrolling level, working to reclaim a stolen lunch order in an intentionally lighthearted, arcade-inspired premise.</p>
+              <p>Selectable difficulty modes adjust the challenge of these encounters, giving the short experience some replay value despite its compact scope. Enemy AI behavior and encounter pacing were tuned to keep each wave feeling fast and satisfying rather than drawn out.</p>
+              <p>The wave and difficulty structure takes clear inspiration from classic arcade brawlers like Streets of Rage and Bare Knuckle, prioritizing short, replayable sessions over longer-form pacing.</p>
+            </div>
+
+            <!-- GIFs (optional) — replace src with your real gif(s) or mp4 clip(s), add/remove .screenshot-item entries, or delete this whole block if none.
+                 MP4s are far more optimized than GIFs for the same "looping clip" effect — use a <video> tag like below instead of <img> for mp4s. -->
+            <div class="feature-media-group">
+              <!--<h5>GIFs</h5>-->
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/lf_progression.mp4" type="video/mp4">
+                  </video>
+                </div>      
+              </div>
+            </div> 
           </div>
 
-          <!-- Development Details -->
-          <div class="desc-card">
-            <h4>Development Details</h4>
-            <p>- <strong>Engine:</strong> Unreal Engine 5.7.4</p>
-            <p>- <strong>Role:</strong> Solo Developer, responsible for 3d animations creation, game design, and gameplay/UI programming.</p>
-            <p>- <strong>Platforms:</strong> PC (Windows)</p>
-          </div>
+          <!-- ─────────────────────────────────────────────────────────
+               FEATURE CARD 3
+               ───────────────────────────────────────────────────────── -->
+          <div class="feature-block">
+            <h4><span style="color:#136ac1;">Movement &amp; Game Feel: </span>Double-Jump, Sprint &amp; Pacing</h4>
 
-        </div><!-- /description-grid -->
+            <div class="feature-description">
+              <p>Beyond combat, movement includes sprinting and a double-jump mechanic to keep traversal snappy across the level, paired with an upbeat action music track that reinforces the game's pacing and energy.</p>
+              <p>Stylized visuals and a simple, comedic narrative - a food-delivery ambush gone wrong - were used to keep the tone light, while development focus stayed on combat feel, animation responsiveness, and clean UE5 gameplay systems.</p>
+              <p>The current version is intentionally short and contained within a single level; future updates may expand it further with boss fights, additional levels, and more enemy variety.</p>
+            </div>
 
-        <!-- ── Screenshots Grid ── -->
-        <div class="project-section" data-aos="fade-up">
-          <h4>Screenshots</h4>
-          <div class="screenshot-grid">
+          <!-- GIFs (optional) — replace src with your real gif(s) or mp4 clip(s), add/remove .screenshot-item entries, or delete this whole block if none.
+                 MP4s are far more optimized than GIFs for the same "looping clip" effect — use a <video> tag like below instead of <img> for mp4s. -->
+            <div class="feature-media-group">
+              <!--<h5>GIFs</h5>-->
+              <div class="screenshot-grid feature-media-grid">
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/lf_walk.mp4" type="video/mp4">
+                  </video>
+                </div>
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/lf_sprint.mp4" type="video/mp4">
+                  </video>
+                </div>                
+
+                <div class="screenshot-item" onclick="openLightbox(this)">
+                  <video autoplay loop muted playsinline>
+                    <source src="assets/video/lf_jump.mp4" type="video/mp4">
+                  </video>
+                </div>       
+              </div>
+            </div> 
+
+          <!-- Add more feature cards below by duplicating any block above. -->
+
+        </div>
+
+        <!-- ══════ GALLERY ══════ -->
+        <div class="project-section-block" data-aos="fade-up">
+          <h3>Gallery</h3>
+          <div class="screenshot-grid feature-media-grid">
             <div class="screenshot-item" onclick="openLightbox(this)">
               <img src="assets/img/lunch-fury/ss01.png" alt="Title Screen">
             </div>
@@ -288,13 +594,14 @@
           </div>
         </div>
 
-        <!-- Back Button -->
+        <!-- ══════ BACK BUTTON (BOTTOM) ══════ -->
         <div class="text-center back-btn" data-aos="fade-up">
-          <a href="game-projects.html" class="btn btn-primary">Back to Game Projects</a>
+          <a href="game-projects.html" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Back to Game Projects
+          </a>
         </div>
 
       </div>
-
     </section>
 
   </main>
@@ -304,6 +611,7 @@
     <div class="lightbox-frame" id="lightbox-frame">
       <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">&times;</button>
       <img id="lightbox-img" src="" alt="">
+      <video id="lightbox-video" controls loop style="display:none; max-width:72vw; max-height:80vh; border-radius:12px;"></video>
     </div>
   </div>
 
@@ -332,17 +640,35 @@
 
   <script>
     function openLightbox(cardEl) {
-      const src = cardEl.querySelector('img').src;
-      const alt = cardEl.querySelector('img').alt;
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-img').alt = alt;
+      const imgEl = cardEl.querySelector('img');
+      const videoEl = cardEl.querySelector('video');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxVideo = document.getElementById('lightbox-video');
+
+      if (videoEl) {
+        const src = videoEl.querySelector('source').src;
+        lightboxVideo.innerHTML = `<source src="${src}" type="video/mp4">`;
+        lightboxVideo.style.display = 'block';
+        lightboxImg.style.display = 'none';
+        lightboxVideo.load();
+        lightboxVideo.play();
+      } else {
+        lightboxImg.src = imgEl.src;
+        lightboxImg.alt = imgEl.alt;
+        lightboxImg.style.display = 'block';
+        lightboxVideo.style.display = 'none';
+      }
+
       document.getElementById('lightbox-overlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
+      const lightboxVideo = document.getElementById('lightbox-video');
       document.getElementById('lightbox-overlay').classList.remove('active');
       document.getElementById('lightbox-img').src = '';
+      lightboxVideo.pause();
+      lightboxVideo.innerHTML = '';
       document.body.style.overflow = '';
     }
 
