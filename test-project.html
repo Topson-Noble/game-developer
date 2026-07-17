@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Sortris - Game Project</title>
+  <title>Game Projects - Portfolio</title>
 
   <!-- Favicons -->
-  <link href="/assets/img/favicon.png" rel="icon">
-  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -16,469 +16,66 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/main.css?v=3" rel="stylesheet">
 
   <style>
-    /* ══════════════════════════════════════════════════════════
-       PROJECT PAGE TEMPLATE — consistent structure for all games
-       Sections: Back(top) → Title → Quick Facts → Video →
-       Actions (Download/GitHub) → Overview → Tools Used →
-       Game Features (repeatable) → Gallery → Back(bottom)
-       ══════════════════════════════════════════════════════════ */
-
-    /* ── Back button (top) ── */
-    .back-btn-top {
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-
-    .back-btn {
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    /* ── Quick Facts strip ── */
-    .quick-facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1rem;
-      justify-content: center;
-      margin: 1.25rem 0 2rem;
-    }
-
-    .quick-facts .fact-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.9rem;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 0.8rem;
-      color: #ffffff;
-      white-space: nowrap;
-    }
-
-    .quick-facts .fact-pill strong {
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 500;
-    }
-
-    /* ── Video ── */
-    .project-video iframe {
-      width: 100%;
-      height: 500px;
-      border-radius: 10px;
-    }
-
-    /* ── Action buttons row (Download + GitHub) ── */
-    .project-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: flex-start;
-      margin-bottom: 3rem;
-    }
-
-    .project-actions .btn {
-      min-width: 220px;
-    }
-
-    /* ── Section headings ── */
-    .project-section-block {
-      margin-bottom: 3rem;
-    }
-
-    .project-section-block > h3 {
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    /* ── Overview / Tools / Technical Details card ──
-       The section header now lives INSIDE the card as a title bar.
-       Only .info-card-body scrolls (not the whole card), so the
-       header stays visible the whole time, even while the text
-       below it is being scrolled. */
-    .info-card {
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.03);
-      overflow: hidden; /* clips the title bar's corners to match the card's rounded corners */
-
-      max-width: 1400px;      /* Control the card's width here*/
-      margin: 0 auto;
-    }
-
-    .info-card-title {
-      margin: 0;
-      padding: 1rem 1.5rem 0.85rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .info-card-body {
-      padding: 1.25rem 1.5rem;
-
-      max-height: 160px;       /* ← ADJUST THIS to control the scrollable body's height */
-      overflow-y: auto;        /* shows a scrollbar only when content overflows */
-      overflow-x: hidden;
-    }
-
-    .info-card p {
-      color: #ffffff;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      text-align: justify;
-    }
-
-    .info-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ── Tools Used tags ──
-       justify-content: center keeps tags centered as a group.
-       flex-wrap already sends overflow tags to a new line automatically
-       once the row runs out of horizontal space in .info-card. */
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6rem;
-    }
-
-    .tools-list .tool-tag {
-      padding: 0.4rem 0.9rem;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 0.85rem;
-      color: #ffffff;
-    }
-
-    /* ── Game Features (repeatable block) ── */
-    .feature-block {
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    .portfolio-card {
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
       border-radius: 12px;
-      padding: 1.75rem;
-      margin-bottom: 1.75rem;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .feature-block h4 {
-      font-weight: 700;
-      color: #ffffff;
-      font-size: 1.15rem;
-      margin: 0 0 1rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* faded line below the title */
-    }
-
-    /* ── Feature description — scrollable, justified, same behavior
-       as the Project Overview card. Only this block scrolls; the
-       title above and the media below it stay fully visible. ── */
-    .feature-description {
-      max-height: 160px;       /* ← ADJUST THIS to control the scrollable area's height */
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-right: 0.75rem;  /* ← keeps text clear of the scrollbar */
-      padding-left: 0.1rem;    /* small matching space on the left for visual balance */
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* demarcation line before the media below */
-    }
-
-    .feature-description p {
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      text-align: justify;
-    }
-
-    .feature-description p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Sub-group label inside a feature card (GIFs / Screenshots) */
-    .feature-media-group {
-      margin-top: 1.5rem;
-    }
-
-    /* ── PICKY-TOUCH OVERRIDE ──
-       Makes the "GIFS" / "SCREENSHOTS" sub-labels match the feature
-       title (h4) font/style exactly. Delete this whole rule (and the
-       .feature-media-group h5 rule above it becomes unused) to revert
-       these labels back to a smaller, muted, uppercase look instead. */
-    .feature-media-group h5 {
-      font-weight: 700;
-      color: #ffffff;
-      font-size: 1.15rem;
-      margin-bottom: 0.75rem;
-    }
-
-    /* ── Gallery / Screenshot Grid ── */
-    .screenshot-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 0;
-    }
-
-    @media (max-width: 767px) {
-      .screenshot-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .screenshot-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── Game Features media grid — same sizing as the Gallery grid above,
-       but centers items instead of stretching them across 3 fixed columns.
-       1 item = centered single item. 2 items = centered pair. 3+ items =
-       wraps and fills rows just like the Gallery grid. ── */
-    .feature-media-grid {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 20px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.25rem;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.35s ease, border-color 0.35s ease;
+      cursor: pointer;
+      text-align: center;
     }
 
-    .feature-media-grid .screenshot-item {
-      flex: 0 0 calc((100% - 2.5rem) / 3);
-      max-width: calc((100% - 2.5rem) / 3);
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.45) !important;
     }
 
-    @media (max-width: 767px) {
-      .feature-media-grid .screenshot-item {
-        flex-basis: calc((100% - 1.25rem) / 2);
-        max-width: calc((100% - 1.25rem) / 2);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .feature-media-grid .screenshot-item {
-        flex-basis: 100%;
-        max-width: 100%;
-      }
-    }
-
-    .screenshot-item {
-      aspect-ratio: 16 / 9;
+    .portfolio-card .portfolio-img {
+      width: 100%;
+      height: 220px;
       overflow: hidden;
       border-radius: 10px;
-      border: 1.5px solid #c8c8d0;
-      cursor: pointer;
     }
 
-    .screenshot-item img,
-    .screenshot-item video {
+    .portfolio-card .portfolio-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
+      transition: transform 0.45s ease;
     }
 
-    .screenshot-item:hover img,
-    .screenshot-item:hover video {
-      transform: scale(1.06);
+    .portfolio-card:hover .portfolio-img img {
+      transform: scale(1.08);
     }
 
-    /* ── Lightbox Overlay ── */
-    #lightbox-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.72);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
+    .portfolio-card h4 {
+      margin-top: 1rem;
+      margin-bottom: 0.75rem;
     }
 
-    #lightbox-overlay.active {
-      display: flex;
-    }
-
-    .lightbox-frame {
-      position: relative;
-      max-width: 72vw;
-      max-height: 80vh;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.55);
-      background: #000;
-    }
-
-    .lightbox-frame img {
-      display: block;
-      max-width: 72vw;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      width: 32px;
-      height: 32px;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-      z-index: 10;
-    }
-
-    .lightbox-close:hover {
-      background: rgba(0,0,0,0.9);
-    }
-
-    /* ── Zigzag Flow layout for Concept Evolution feature ── */
-    .flow-zigzag {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .portfolio-card p {
+      flex-grow: 1;
       margin-bottom: 0;
-      padding: 0 2rem;
     }
 
-    .flow-row {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .flow-row-reverse {
-      flex-direction: row-reverse;
-    }
-
-    .flow-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 0 0 calc((100% - 6rem) / 3);
-      max-width: calc((100% - 6rem) / 3);
-      min-width: 0;
-    }
-
-    .flow-item .screenshot-item {
-      width: 100%;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
-    .flow-label {
-      width: 100%;
-      background: #000000;
-      color: #ffffff;
-      font-family: 'Work Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      text-align: center;
-      padding: 0.5rem 0.4rem;
-      border: 1.5px solid #c8c8d0;
-      border-top: none;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      margin-top: -1px;
-      line-height: 1.4;
-    }
-
-    .flow-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      flex-shrink: 0;
-      padding-top: 2.8rem;
-      width: 2rem;
-    }
-
-    .flow-arrow svg {
-      width: 2rem;
-      height: 2rem;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
-    }
-
-    /* Connector row between the two flow rows */
-    .flow-connector-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      width: 100%;
-      padding: 0.25rem 0;
-    }
-
-    .flow-connector-spacer {
-      flex: 0 0 calc((100% - 6rem) / 3);
-      max-width: calc((100% - 6rem) / 3);
-    }
-
-    .flow-connector-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      flex-shrink: 0;
-      width: 2rem;
-    }
-
-    .flow-connector-arrow svg {
-      width: 2rem;
-      height: 2rem;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
-    }
-
-    @media (max-width: 767px) {
-      .flow-zigzag {
-        padding: 0 0.5rem;
-      }
-      .flow-row {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-      }
-      .flow-item {
-        flex: 0 0 calc((100% - 1.5rem) / 2);
-        max-width: calc((100% - 1.5rem) / 2);
-      }
-      .flow-arrow {
-        display: none;
-      }
-      .flow-connector-row {
-        display: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .flow-item {
-        flex: 0 0 100%;
-        max-width: 100%;
-      }
+    /* Pin View button to the bottom of every card */
+    .portfolio-card .btn {
+      margin-top: auto;
+      padding-top: 1rem;
+      align-self: center;
     }
   </style>
 </head>
@@ -487,7 +84,6 @@
 
   <header id="header" class="header d-flex align-items-center light-background sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
-
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -495,204 +91,98 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
     </div>
   </header>
 
   <main class="main">
+    <section id="game-projects" class="game-projects section"
+      style="background: url('assets/img/techybg04.png') center center/cover no-repeat; position: relative; overflow: hidden;">
+      <div style="position:absolute; inset:0; background:rgba(0,0,0,0.05); backdrop-filter: blur(0px); z-index:0;"></div>
 
-    <section id="project-details" class="portfolio section">
-      <div class="container" data-aos="fade-up">
+      <div class="container" data-aos="fade-up" data-aos-delay="100" style="position:relative; z-index:1;">
 
-        <!-- ══════ BACK BUTTON (TOP) ══════ -->
-        <div class="back-btn-top" data-aos="fade-up">
-          <a href="game-projects.html" class="btn btn-primary">
-            <i class="bi bi-arrow-left"></i> Back to Game Projects
-          </a>
-        </div>
-
-        <!-- ══════ TITLE + SHORT DESCRIPTION ══════ -->
         <div class="container section-title" data-aos="fade-up">
-          <h2>Sortris</h2>
-          <p>A casual, grid-style, physics-based interior design game.</p>
+          <h2>Game Projects</h2>
+          <p>Click on anyone to explore in depth. </p>
         </div>
 
-        <!-- ══════ QUICK FACTS STRIP ══════ -->
-        <div class="quick-facts" data-aos="fade-up">
-          <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.5.4</span>
-          <span class="fact-pill"><strong>Platform:</strong> PC (Windows)</span>
-          <span class="fact-pill"><strong>Role:</strong> Programmer, 3D Artist</span>
-          <span class="fact-pill"><strong>Team:</strong> 5 Members</span>
-          <span class="fact-pill"><strong>Duration:</strong> Game Jam (2025 Games Now! #17)</span>
-          <span class="fact-pill"><strong>Theme:</strong> CUTE</span>
-        </div>
+        <!-- 2-column grid -->
+        <div class="container">
+          <div class="row gy-4 justify-content-center">
 
-        <!-- ══════ GAMEPLAY VIDEO ══════ -->
-        <div class="ratio ratio-16x9 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <iframe
-            src="https://www.youtube.com/embed/_otJA5hi3PM?start=2"
-            title="Sortris Gameplay Demo"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <!-- ══════ ACTION BUTTONS: DOWNLOAD + GITHUB ══════ -->
-        <div class="project-actions" data-aos="fade-up" data-aos-delay="150">
-          <a href="https://sukinichi.itch.io/sortris" target="_blank" class="btn btn-primary">
-            <i class="bi bi-download"></i> Download Game
-          </a>
-        </div>
-
-        <!-- ══════ PROJECT OVERVIEW ══════ -->
-        <div class="project-section-block" data-aos="fade-up">
-          <div class="info-card">
-            <h3 class="info-card-title">Project Overview</h3>
-            <div class="info-card-body">
-
-              <p>SORTRIS is a game where you take the role of an interior designer but with a twist - the furniture falls into place! Help out five clients in designing their dream rooms and organize their stuff however you want. Get creative and try your best to give these clients the room they deserve in this cute but hectic experience!</p>
-
-              <p>Sortris was created by a team of five for the Games Now!'s #17 Game Jam 2025. The theme for this game jam is CUTE. This game is a collaboration of game developers between different nationalities: Pakistan, Indonesia, Nigeria, and the Philippines.</p>
-
-              <p>The core gameplay revolves around a Tetris-inspired grid system where furniture pieces drop from above and the player must arrange them within a room to satisfy each client's needs. The physics-based interactions add an extra layer of chaos and charm to the interior design process.</p>
-
-              <p>For full disclosure, this game does not contain any content derived or produced by generative AI tools. It does not feature mature content and/or themes, and all copyrighted material is credited in the documentation.</p>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- ══════ TOOLS USED ══════ -->
-        <div class="project-section-block" data-aos="fade-up">
-          <div class="info-card">
-            <h3 class="info-card-title">Tools</h3>
-            <div class="info-card-body">
-              <div class="quick-facts">
-                <span class="fact-pill"><strong>Engine:</strong> Unreal Engine 5.5.4</span>
-                <span class="fact-pill"><strong>Development Focus:</strong> Grid-style movement, physics-collision enabled, in-game snapshot mechanics</span>
-                <span class="fact-pill"><strong>Platforms:</strong> PC (Windows), with potential scalability for web or mobile builds</span>
+            <!-- The Songs Of Ayan -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+              <div class="portfolio-card h-100 p-4" onclick="location.href='the-songs-of-ayan.html';">
+                <div class="portfolio-img">
+                  <img src="assets/img/the-songs-of-ayan/SS01.png" alt="The Songs Of Ayan">
+                </div>
+                <h4>The Songs Of Ayan</h4>
+                <p>A narrative-rhythm game.</p>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- ══════ TECHNICAL DETAILS ══════ -->
-        <div class="project-section-block" data-aos="fade-up">
-          <div class="info-card">
-            <h3 class="info-card-title">Technical <span style="color:#136ac1;">Details</span></h3>
-            <div class="info-card-body">
-              <div class="tools-list">
-                <span class="tool-tag">Game Programming</span>
-                <span class="tool-tag">Blueprints</span>
-                <span class="tool-tag">Grid-Style Movement</span>
-                <span class="tool-tag">Physics-Collision Systems</span>
-                <span class="tool-tag">In-Game Snapshot Mechanics</span>
-                <span class="tool-tag">3D Art</span>
-                <span class="tool-tag">Game Design</span>
-                <span class="tool-tag">UI/UX Design</span>
-                <span class="tool-tag">Rapid Prototyping</span>
-                <span class="tool-tag">Game Jam Development</span>
+            <!-- The Aurora Snow Slingers -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+              <div class="portfolio-card h-100 p-4" onclick="location.href='the-aurora-snow-slingers.html';">
+                <div class="portfolio-img">
+                  <img src="assets/img/aurora_snow_slingers/title.png" alt="The Aurora Snow Slingers">
+                </div>
+                <h4>The Aurora Snow Slingers</h4>
+                <p>A fast-paced, lighthearted action experience developed for the Aurora Game Jam 2025.</p>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- ══════ GAME FEATURES (repeatable block) ══════ -->
-        <div class="project-section-block" data-aos="fade-up">
-
-          <!-- ─────────────────────────────────────────────────────────
-               FEATURE CARD 1 — Grid-Style Movement
-               ───────────────────────────────────────────────────────── -->
-          <div class="feature-block">
-            <h4><span style="color:#136ac1;">Grid-Style Movement: </span>Tetris-Inspired Room Arrangement</h4>
-
-            <div class="feature-description">
-              <p>The core mechanic of Sortris is a grid-style movement system inspired by classic Tetris gameplay. Furniture pieces fall from above into a designated room space, and the player must strategically position and rotate each piece to create a functional and aesthetically pleasing layout.</p>
-              <p>Each piece interacts with the grid and other objects through physics-based collisions, meaning placement is not just about alignment but also about managing how items stack, tumble, and settle. This creates a dynamic and sometimes chaotic design process where careful planning meets emergent physical behavior.</p>
-              <p>The grid system ensures that players have clear spatial constraints to work within, while the physics engine adds unpredictability and charm. A piece that looks perfectly placed might wobble and shift when another item lands nearby, forcing the player to adapt their strategy on the fly.</p>
-              <p>This combination of structured grid movement and organic physics results in a gameplay loop that is easy to understand but offers depth through the interplay of planning and reactive problem-solving.</p>
-            </div>
-
-            <div class="feature-media-group">
-              <div class="screenshot-grid feature-media-grid">
-                <!-- GIFs/MP4 placeholders — to be added later -->
+                        <!-- Lunch Fury -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+              <div class="portfolio-card h-100 p-4" onclick="location.href='lunch-fury.html';">
+                <div class="portfolio-img">
+                  <img src="assets/img/lunch-fury/avatar.png" alt="Lunch Fury">
+                </div>
+                <h4>Lunch Fury</h4>
+                <p>A short stylized 3D side-scrolling beat-em-up game.</p>
               </div>
             </div>
-          </div>
 
-          <!-- ─────────────────────────────────────────────────────────
-               FEATURE CARD 2 — Photo-Mode / Snapshot System
-               ───────────────────────────────────────────────────────── -->
-          <div class="feature-block">
-            <h4><span style="color:#136ac1;">Photo Mode: </span>Capture Your Design at the End of Each Round</h4>
-
-            <div class="feature-description">
-              <p>At the end of each design round, players can activate the in-game photo mode to capture a screenshot of their final room arrangement. This snapshot serves as a memento of the player's creative work and can be saved or shared.</p>
-              <p>The photo mode was designed to give players a sense of accomplishment and a way to document their unique interior designs. Each client's room will look different depending on the player's choices, making every screenshot a one-of-a-kind creation.</p>
-              <p>The snapshot system captures the full room state, including all placed furniture, their positions, rotations, and any physics-driven settling that occurred during the round. This ensures that the final image accurately represents the player's completed design.</p>
-              <p>Future iterations could expand this system to include filters, camera angles, and social sharing options, turning each completed room into a shareable piece of player-generated content.</p>
-            </div>
-
-            <div class="feature-media-group">
-              <div class="screenshot-grid feature-media-grid">
-                <!-- GIFs/MP4 placeholders — to be added later -->
+            <!-- Sortris -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+              <div class="portfolio-card h-100 p-4" onclick="location.href='sortris.html';">
+                <div class="portfolio-img">
+                  <img src="assets/img/sortris/Sortris.png" alt="Sortris">
+                </div>
+                <h4>Sortris</h4>
+                <p>A casual, grid-style, physics-based game.</p>
               </div>
             </div>
-          </div>
 
-          <!-- ─────────────────────────────────────────────────────────
-               FEATURE CARD 3 — Target Photo Comparison (Planned Future Feature)
-               ───────────────────────────────────────────────────────── -->
-          <div class="feature-block">
-            <h4><span style="color:#136ac1;">Target Comparison System: </span>Match the Reference, Score Your Design (Planned)</h4>
-
-            <div class="feature-description">
-              <p>A planned future feature for Sortris introduces a target-based scoring system that adds a competitive and evaluative layer to the interior design gameplay. At the start of each round, the player will be shown a reference photograph displaying the ideal or target arrangement of furniture for that client's room.</p>
-              <p>This reference image will remain visible in the UI throughout the gameplay session, serving as a visual guide that the player can consult while placing and arranging items. The goal is to recreate the target layout as closely as possible within the constraints of the falling-piece mechanic and physics interactions.</p>
-              <p>When the round concludes, the player will use the existing photo mode to capture a screenshot of their final arrangement. The system will then perform an automated comparison between the player's screenshot and the original target image, analyzing spatial alignment, furniture placement, and overall room composition.</p>
-              <p>Based on this comparison, the game will generate a similarity score that rewards the player for how closely their design matches the reference. Higher accuracy yields better scores, encouraging replayability as players strive to perfect their arrangements. This system transforms the freeform creative experience into a skill-based challenge where precision and spatial reasoning are key.</p>
-              <p>This feature is currently in the conceptual stage and represents a natural evolution of the existing snapshot mechanics, bridging creative expression with objective evaluation.</p>
-            </div>
-
-            <div class="feature-media-group">
-              <div class="screenshot-grid feature-media-grid">
-                <!-- GIFs/MP4 placeholders — to be added later -->
+            <!-- Cantoni -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+              <div class="portfolio-card h-100 p-4" onclick="location.href='cantoni.html';">
+                <div class="portfolio-img">
+                  <img src="assets/img/cantoni/cantoni-cover-image.png" alt="Cantoni">
+                </div>
+                <h4>Cantoni</h4>
+                <p>A simple, highscoring game built with Unreal Engine, utilizing a point and click mechanics and a leaderboard system.</p>
               </div>
             </div>
+
+                        <!-- Test 
+            <div class="col-lg-5 col-md-6" data-aos="fade-up">
+              <div class="portfolio-card h-100 p-4" onclick="location.href='test-project.html';">
+                <div class="portfolio-img">
+                  <img src="assets/img/cantoni/cantoni-cover-image.png" alt="Cantoni">
+                </div>
+                <h4>Test</h4>
+                <p>Test.</p>
+              </div>
+            </div>-->
+
           </div>
-
-        </div>
-
-        <!-- ══════ GALLERY ══════ -->
-        <div class="project-section-block" data-aos="fade-up">
-          <h3>Gallery</h3>
-          <div class="screenshot-grid feature-media-grid">
-            <div class="screenshot-item" onclick="openLightbox(this)">
-              <img src="assets/img/sortris/Sortris.png" alt="Sortris Screenshot 1">
-            </div>
-          </div>
-        </div>
-
-        <!-- ══════ BACK BUTTON (BOTTOM) ══════ -->
-        <div class="text-center back-btn" data-aos="fade-up">
-          <a href="game-projects.html" class="btn btn-primary">
-            <i class="bi bi-arrow-left"></i> Back to Game Projects
-          </a>
-        </div>
+        </div><!-- /row -->
 
       </div>
     </section>
 
   </main>
-
-  <!-- ── Lightbox Overlay ── -->
-  <div id="lightbox-overlay" onclick="handleOverlayClick(event)">
-    <div class="lightbox-frame" id="lightbox-frame">
-      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">&times;</button>
-      <img id="lightbox-img" src="" alt="">
-      <video id="lightbox-video" controls loop style="display:none; max-width:72vw; max-height:80vh; border-radius:12px;"></video>
-    </div>
-  </div>
 
   <footer id="footer" class="footer">
     <div class="container">
@@ -709,59 +199,15 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
 
-  <!-- Vendor JS Files -->
-  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/vendor/aos/aos.js"></script>
-  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/assets/js/main.js"></script>
-
-  <script>
-    function openLightbox(cardEl) {
-      const imgEl = cardEl.querySelector('img');
-      const videoEl = cardEl.querySelector('video');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const lightboxVideo = document.getElementById('lightbox-video');
-
-      if (videoEl) {
-        const src = videoEl.querySelector('source').src;
-        lightboxVideo.innerHTML = `<source src="${src}" type="video/mp4">`;
-        lightboxVideo.style.display = 'block';
-        lightboxImg.style.display = 'none';
-        lightboxVideo.load();
-        lightboxVideo.play();
-      } else {
-        lightboxImg.src = imgEl.src;
-        lightboxImg.alt = imgEl.alt;
-        lightboxImg.style.display = 'block';
-        lightboxVideo.style.display = 'none';
-      }
-
-      document.getElementById('lightbox-overlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      const lightboxVideo = document.getElementById('lightbox-video');
-      document.getElementById('lightbox-overlay').classList.remove('active');
-      document.getElementById('lightbox-img').src = '';
-      lightboxVideo.pause();
-      lightboxVideo.innerHTML = '';
-      document.body.style.overflow = '';
-    }
-
-    function handleOverlayClick(e) {
-      if (e.target === document.getElementById('lightbox-overlay')) {
-        closeLightbox();
-      }
-    }
-
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
